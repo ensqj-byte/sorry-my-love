@@ -1,777 +1,156 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FOR MY REMYY // DIGITAL LOVE</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Remy ♡</title>
 <style>
-:root {
-    --pink: #ff4dba;
-    --hot: #ff168e;
-    --light: #ffc8ef;
-    --green: #36ff9a;
-    --bg: #030306;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: var(--bg);
-    color: #ffe5f5;
-    font-family: Consolas, "Courier New", monospace;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-#matrix {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: .38;
-    pointer-events: none;
-}
-
-.scanlines {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    opacity: .13;
-    background: repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 3px,
-        #ff8bd4 4px
-    );
-}
-
-main {
-    position: relative;
-    z-index: 2;
-    width: min(92%, 760px);
-    margin: auto;
-    padding: 45px 0;
-    text-align: center;
-}
-
-.top-label {
-    color: var(--green);
-    font-size: 11px;
-    letter-spacing: 3px;
-    line-height: 2;
-    text-shadow: 0 0 12px var(--green);
-    overflow-wrap: anywhere;
-}
-
-h1 {
-    margin: 18px 0;
-    font-size: clamp(34px, 8vw, 65px);
-    color: #fff;
-    font-weight: normal;
-    text-shadow:
-        0 0 5px #fff,
-        0 0 15px var(--pink),
-        0 0 40px var(--hot);
-    animation: titleGlow 2.5s infinite alternate;
-}
-
-@keyframes titleGlow {
-    from { text-shadow: 0 0 8px var(--pink); }
-    to {
-        text-shadow: 0 0 12px white,
-                     0 0 30px var(--pink),
-                     0 0 65px var(--hot);
-    }
-}
-
-.subtitle {
-    color: #e9acd5;
-    font-size: 13px;
-    line-height: 2;
-    margin-bottom: 22px;
-}
-
-.neon-line {
-    height: 1px;
-    width: 70%;
-    margin: 25px auto;
-    background: var(--pink);
-    box-shadow: 0 0 8px var(--pink), 0 0 20px var(--hot);
-}
-
-/* DIGITAL HEART */
-
-.heart-section {
-    position: relative;
-    width: min(100%, 480px);
-    margin: 0 auto;
-}
-
-#heartCanvas {
-    display: block;
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0 0 10px #ff168e);
-}
-
-.heart-caption {
-    margin: -8px 0 28px;
-    color: var(--light);
-    letter-spacing: 3px;
-    font-size: 12px;
-    text-shadow: 0 0 12px var(--pink);
-    animation: blink 1.5s infinite alternate;
-}
-
-@keyframes blink {
-    from { opacity: .65; }
-    to { opacity: 1; }
-}
-
-/* PHOTO */
-
-.photo-frame {
-    width: min(75%, 310px);
-    margin: 20px auto 24px;
-    padding: 8px;
-    border: 1px solid var(--pink);
-    background: #0c0610;
-    box-shadow: 0 0 12px var(--pink),
-                0 0 35px #ff168e44,
-                inset 0 0 15px #ff168e22;
-    animation: photoGlow 3s infinite alternate;
-}
-
-@keyframes photoGlow {
-    from { box-shadow: 0 0 8px var(--pink); }
-    to {
-        box-shadow: 0 0 20px var(--pink),
-                    0 0 45px #ff168e77;
-    }
-}
-
-.photo-frame img {
-    display: block;
-    width: 100%;
-    max-height: 430px;
-    object-fit: cover;
-}
-
-#photoError {
-    display: none;
-    padding: 20px;
-    color: var(--pink);
-    font-size: 12px;
-    line-height: 1.8;
-}
-
-.caption {
-    color: #ffc5e9;
-    font-size: 12px;
-    line-height: 2;
-    margin-bottom: 24px;
-}
-
-/* BUTTONS */
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 25px auto;
-}
-
-button {
-    padding: 13px 18px;
-    background: #100512;
-    border: 1px solid var(--pink);
-    color: #fff;
-    font: inherit;
-    font-size: 12px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #ff168e44;
-    transition: .25s;
-}
-
-button:hover {
-    background: #3b092b;
-    box-shadow: 0 0 15px var(--pink), 0 0 35px #ff168e77;
-    transform: translateY(-2px);
-}
-
-button:active {
-    transform: scale(.96);
-}
-
-.love-button {
-    color: var(--green);
-    border-color: var(--green);
-    box-shadow: 0 0 12px #36ff9a44;
-}
-
-/* LOVE STATUS */
-
-.status {
-    width: min(100%, 500px);
-    margin: 28px auto;
-    padding: 18px;
-    border: 1px dashed #a22c80;
-    background: #0c0610dd;
-    color: #ffc8ef;
-    font-size: 12px;
-    line-height: 2;
-    text-align: left;
-}
-
-.status strong {
-    color: var(--green);
-    font-weight: normal;
-}
-
-.status-title {
-    color: var(--pink);
-    margin-bottom: 8px;
-}
-
-/* LETTER */
-
-.letter {
-    display: none;
-    text-align: left;
-    margin-top: 30px;
-    padding: clamp(18px, 5vw, 35px);
-    background: #08050c;
-    border: 1px solid var(--pink);
-    box-shadow: 0 0 12px #ff168e55,
-                inset 0 0 25px #ff168e0d;
-    line-height: 1.95;
-    font-size: 13px;
-    overflow-wrap: anywhere;
-    animation: appear .7s ease;
-}
-
-.letter h2 {
-    text-align: center;
-    color: #fff;
-    font-size: 25px;
-    font-weight: normal;
-    text-shadow: 0 0 15px var(--pink);
-    margin-bottom: 25px;
-}
-
-.letter p {
-    margin-bottom: 20px;
-}
-
-.signature {
-    text-align: right;
-    color: var(--pink);
-    margin-top: 25px;
-}
-
-/* SECRET MESSAGE */
-
-.secret {
-    display: none;
-    margin-top: 25px;
-    padding: 24px;
-    border: 1px dashed var(--green);
-    background: #030b08;
-    color: #b8ffda;
-    font-size: 13px;
-    line-height: 2;
-    text-align: left;
-    box-shadow: 0 0 18px #36ff9a22;
-    overflow-wrap: anywhere;
-    animation: appear .6s ease;
-}
-
-.secret h2 {
-    text-align: center;
-    color: var(--green);
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.secret p {
-    margin-bottom: 15px;
-}
-
-@keyframes appear {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* EXPLOSION */
-
-.burst {
-    position: fixed;
-    z-index: 20;
-    pointer-events: none;
-    color: var(--pink);
-    text-shadow: 0 0 12px var(--pink);
-    animation: burst .95s ease-out forwards;
-}
-
-@keyframes burst {
-    from { transform: translate(0,0) scale(.5); opacity: 1; }
-    to {
-        transform: translate(var(--x),var(--y)) scale(1.5);
-        opacity: 0;
-    }
-}
-
-footer {
-    color: #bd87b0;
-    font-size: 11px;
-    line-height: 2;
-    margin: 35px 0 10px;
-}
-
-.footer-heart {
-    color: var(--pink);
-    text-shadow: 0 0 12px var(--pink);
-}
-
-@media (max-width: 480px) {
-    main { padding-top: 30px; }
-    .top-label { letter-spacing: 1.5px; }
-    .photo-frame { width: 84%; }
-    button { width: min(100%, 320px); }
-    .buttons { flex-direction: column; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-    }
-}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#030008;color:white;font-family:Arial,sans-serif}
+canvas{position:fixed;inset:0;width:100%;height:100%}
+#bg{z-index:0}
+#fx{z-index:1}
+.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse,transparent 15%,#030008a8 100%)}
+#scene{position:fixed;inset:0;z-index:3;display:grid;place-items:center;pointer-events:none}
+.word{position:absolute;opacity:0;transform:scale(.3);font-size:clamp(65px,16vw,145px);font-weight:900;letter-spacing:5px;color:#fff;text-shadow:0 0 8px white,0 0 25px #ff45b5,0 0 65px #ff008c;transition:opacity .65s,transform .65s}
+.word.on{opacity:1;transform:scale(1)}
+#message{position:absolute;text-align:center;opacity:0;transform:scale(.5);font-size:clamp(21px,5vw,37px);font-family:cursive;font-style:italic;line-height:1.5;color:#fff;text-shadow:0 0 8px white,0 0 22px #ff38ac,0 0 45px #ff008c;transition:opacity 1.5s,transform 1.5s}
+#message.on{opacity:1;transform:scale(1)}
+#footer{position:fixed;z-index:4;bottom:7%;width:100%;text-align:center;font-size:10px;letter-spacing:4px;color:#ff9bd7;text-shadow:0 0 12px #ff168f}
 </style>
 </head>
-
 <body>
-
-<canvas id="matrix"></canvas>
-<div class="scanlines"></div>
-
-<main>
-    <p class="top-label">SYSTEM MESSAGE // INAS TO REMY</p>
-
-    <h1>For My Love ♡</h1>
-
-    <p class="subtitle">
-        [ CONNECTION ESTABLISHED ]<br>
-        If Inas could put all of this into words,<br>
-        this little page still wouldn't be enough.
-    </p>
-
-    <div class="neon-line"></div>
-
-    <div class="heart-section">
-        <canvas id="heartCanvas" width="480" height="340"></canvas>
-    </div>
-
-    <p class="heart-caption">♥ DIGITAL LOVE // ONLY FOR REMY ♥</p>
-
-    <div class="photo-frame">
-        <img
-            src="remy.jpg"
-            alt="My baby Remy"
-            onerror="this.style.display='none';document.getElementById('photoError').style.display='block';"
-        >
-        <p id="photoError">
-            IMAGE NOT FOUND // Please put remy.jpg beside index.html
-        </p>
-    </div>
-
-    <p class="caption">
-        My favourite boy, yang ganteng, pandai, imut, lucu, leviu. ♡
-    </p>
-
-    <div class="buttons">
-        <button onclick="openLetter()">[ OPEN MY LETTER ] 💌</button>
-        <button onclick="showSecret()">[ SECRET MESSAGE ] ♡</button>
-        <button class="love-button" onclick="loveExplosion()">
-            [ SEND LOVE.exe ] ♥
-        </button>
-    </div>
-
-    <div class="status">
-        <p class="status-title">SYSTEM STATUS</p>
-        <p>Recipient: <strong>REMY</strong></p>
-        <p>Sender: <strong>INAS</strong></p>
-        <p>Love.exe: <strong>RUNNING ♥</strong></p>
-        <p>Apology status: <strong>SINCERE</strong></p>
-        <p>Distance: <strong>TOO FAR :(</strong></p>
-        <p>Love level: <strong>INFINITE ∞</strong></p>
-    </div>
-
-    <section class="letter" id="letter">
-        <h2>Dear Remy, ♡</h2>
-
-        <p>
-            baby, i just want you to know that i'm really sorry for everything bahh.
-            i know i was wrong for disappearing and not replying to your messages.
-            i know you were waiting for me, mungkin baby tertunggu-tunggu chat dari
-            inas, wondering what happened and why i suddenly went quiet. i'm sorry
-            sebab buat baby rasa macam tu sayang. 😔
-        </p>
-
-        <p>
-            inas tau nda cukup dengan inas cakap sorry saja, sebab at the end of
-            the day, my actions are the ones that made you hurt. mungkin bagi inas
-            benda tu nampak macam biasa, but for you, it might feel different kan
-            baby? and i'm sorry sebab inas nda fikir betul-betul pasal perasaan
-            baby time tu. you deserve to feel loved, you deserve reassurance, and
-            you deserve someone yang nda buat baby tertanya-tanya sama ada baby ni
-            penting atau nda.
-        </p>
-
-        <p>
-            and baby, please don't think that just because inas went quiet, it
-            means inas don't care about you anymore. that's not what inas wants
-            you to feel, bah. inas never wanted you to feel neglected, especially
-            not by someone yang baby sendiri sayang. inas faham kalau baby marah,
-            kecewa, or even penat dengan sikap inas. inas nda boleh salahkan baby
-            for feeling that way sebab inas sendiri yang buat baby rasa macam ni.
-        </p>
-
-        <p>
-            sometimes inas mungkin nda sedar yang benda kecil macam nda reply chat
-            pun boleh buat baby overthink, boleh buat baby rasa jauh dari inas.
-            but now inas faham yang being in a relationship is not just about
-            saying i love you, it's also about showing up, communicating and making
-            sure the person we love doesn't feel alone in the relationship.
-        </p>
-
-        <p>
-            i don't want us to keep hurting each other over things yang sebenarnya
-            kita boleh baiki sama-sama, baby. inas nda expect everything to be okay
-            terus, and inas nda expect baby untuk hilang rasa marah tu just because
-            inas minta maaf. take your time if you need it, sayang. inas just want
-            you to know that i'm willing to understand your feelings too, bukan mau
-            fikir pasal perasaan inas saja.
-        </p>
-
-        <p>
-            i'm sorry, my baby. inas tau inas nda perfect, and maybe there are
-            things about myself yang inas masih perlu belajar untuk baiki. but
-            please know that inas don't want to take your feelings for granted.
-            inas mau belajar jadi someone yang baby boleh rasa tenang dengan dia,
-            someone yang baby nda perlu tertanya-tanya pasal kedudukan baby dalam
-            hidup dia.
-        </p>
-
-        <p>
-            i miss us, baby. i miss when we're okay, when we can talk without being
-            upset with each other, when everything feels right between us. but
-            more than just wanting us to be okay again, inas really wants to
-            understand what baby felt when inas did that. sebab inas nda mau kita
-            baik sekejap saja, then benda yang sama berulang lagi.
-        </p>
-
-        <p>
-            i love you, baby, and i'm sorry that i didn't show it properly this
-            time. inas nda minta baby terus maafkan inas sekarang, inas cuma harap
-            baby masih sudi bagi inas peluang untuk tunjuk yang inas boleh buat
-            lebih baik dari sebelum ni. i don't want my baby to feel like he's
-            asking for too much just by wanting a reply from me. you matter to me,
-            baby, your feelings matter, and i'm sorry sebab inas buat baby rasa
-            sebaliknya. i love you so much bah, and i really hope we can talk this
-            through together, sayang. ❤️‍🩹
-        </p>
-
-        <p class="signature">
-            With all my love,<br>
-            Inas ♡
-        </p>
-    </section>
-
-    <div class="secret" id="secret">
-        <h2>PSST, BABYYY... ♡</h2>
-
-        <p>
-            SORRY SEBAB BUAT ALASAN INAS PEGI MANDI TENGAH TENGAH KITA BECALL
-            PADAHAL MAU BUAT PAGE NI UNTUK BABYYY SORRY SAYAAAAAAAAANGGGG
-            HUAAAAA INAS SAYANG REMYY INAS TIDAMAU HILANG BABYYY LOVE U REMYYYY
-        </p>
-
-        <p>
-            MMMMMMMUAAAAHHHHHHH MAAPP YA SAYANG YA YA YAA INI JA INAS DAPAT BUAT
-            UNTUK PUJUK BABY SEBAB BABY JAUUHH KALAU DEKAT INAS BAGI SUDA BUNGA NII 🤍
-        </p>
-
-        <p>
-            ikan hiu pakai sepatu, love u buat Remy yang satu! 💐
-        </p>
-
-        <p>— Inas, yang sayang Remy banyak-banyak ♡</p>
-    </div>
-
-    <div class="neon-line"></div>
-
-    <footer>
-        <span class="footer-heart">♥</span>
-        ikan hiu pakai sepatu, love u buat Remy yang satu
-        <span class="footer-heart">♥</span><br>
-        CONNECTION: INAS → REMY // FOREVER LOADING...<br>
-        Made with love, from Inas.
-    </footer>
-</main>
+<canvas id="bg"></canvas>
+<canvas id="fx"></canvas>
+<div class="vignette"></div>
+<div id="scene">
+  <div class="word" id="number">3</div>
+  <div class="word" id="you">YOU</div>
+  <div class="word" id="are">ARE</div>
+  <div id="message">I Love You<br>Remy ♡</div>
+</div>
+<div id="footer">MADE WITH LOVE ♡</div>
 
 <script>
-/* MATRIX RAIN */
+const bg=document.getElementById('bg'), b=bg.getContext('2d');
+const fx=document.getElementById('fx'), c=fx.getContext('2d');
+const num=document.getElementById('number');
+const you=document.getElementById('you');
+const are=document.getElementById('are');
+const msg=document.getElementById('message');
+const footer=document.getElementById('footer');
 
-const matrixCanvas = document.getElementById("matrix");
-const matrixCtx = matrixCanvas.getContext("2d");
+let w,h,drops=[],particles=[],heart=false,start=0;
+const chars='01♡LOVEアイウエオ';
 
-let columns = [];
-let fontSize = 14;
-let matrixWidth = 0;
-let matrixHeight = 0;
+function resize(){
+  const d=Math.min(devicePixelRatio||1,2);
+  w=innerWidth;h=innerHeight;
+  [bg,fx].forEach(el=>{
+    el.width=w*d;el.height=h*d;
+    el.style.width=w+'px';el.style.height=h+'px';
+  });
+  b.setTransform(d,0,0,d,0,0);
+  c.setTransform(d,0,0,d,0,0);
+  drops=Array.from({length:Math.ceil(w/16)},()=>Math.random()*-50);
+  if(heart)makeHeart();
+}
+addEventListener('resize',resize);
+resize();
 
-const matrixChars =
-    "01アイウエオカキクケコサシスセソタチツテトLOVE♡♥";
-
-function resizeMatrix() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-    matrixWidth = window.innerWidth;
-    matrixHeight = window.innerHeight;
-
-    matrixCanvas.width = matrixWidth * dpr;
-    matrixCanvas.height = matrixHeight * dpr;
-    matrixCanvas.style.width = matrixWidth + "px";
-    matrixCanvas.style.height = matrixHeight + "px";
-
-    matrixCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const count = Math.ceil(matrixWidth / fontSize);
-    columns = Array.from(
-        { length: count },
-        () => Math.random() * -40
-    );
+function matrix(){
+  b.fillStyle='rgba(3,0,8,.13)';
+  b.fillRect(0,0,w,h);
+  b.font='13px monospace';
+  drops.forEach((y,i)=>{
+    let ch=chars[Math.floor(Math.random()*chars.length)];
+    b.fillStyle=Math.random()>.82?'#ffb5e6':'#e21a8c';
+    b.shadowColor='#ff168f';b.shadowBlur=8;
+    b.fillText(ch,i*16,y*16);
+    drops[i]+=Math.random()*.6+.35;
+    if(y*16>h&&Math.random()>.96)drops[i]=0;
+  });
+  b.shadowBlur=0;
 }
 
-function drawMatrix() {
-    matrixCtx.fillStyle = "rgba(3, 3, 6, 0.12)";
-    matrixCtx.fillRect(0, 0, matrixWidth, matrixHeight);
-
-    matrixCtx.font = fontSize + "px monospace";
-
-    for (let i = 0; i < columns.length; i++) {
-        const char = matrixChars[
-            Math.floor(Math.random() * matrixChars.length)
-        ];
-
-        matrixCtx.fillStyle =
-            Math.random() > 0.94 ? "#ff70cc" : "#36ff9a";
-
-        matrixCtx.fillText(
-            char,
-            i * fontSize,
-            columns[i] * fontSize
-        );
-
-        if (
-            columns[i] * fontSize > matrixHeight &&
-            Math.random() > 0.975
-        ) {
-            columns[i] = 0;
-        }
-
-        columns[i] += 0.45 + Math.random() * 0.7;
-    }
-
-    requestAnimationFrame(drawMatrix);
+function point(t,s){
+  return {
+    x:16*Math.pow(Math.sin(t),3)*s,
+    y:-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))*s
+  };
 }
 
-resizeMatrix();
-window.addEventListener("resize", resizeMatrix);
-drawMatrix();
-
-/* PARTICLE HEART */
-
-const heartCanvas = document.getElementById("heartCanvas");
-const heartCtx = heartCanvas.getContext("2d");
-
-const heartParticles = [];
-let heartWidth = 480;
-let heartHeight = 340;
-let heartTick = 0;
-
-function heartShape(t) {
-    const x = 16 * Math.pow(Math.sin(t), 3);
-    const y = 13 * Math.cos(t)
-        - 5 * Math.cos(2 * t)
-        - 2 * Math.cos(3 * t)
-        - Math.cos(4 * t);
-
-    return { x, y };
-}
-
-function buildHeart() {
-    heartParticles.length = 0;
-
-    const count = window.innerWidth < 500 ? 650 : 1100;
-
-    for (let i = 0; i < count; i++) {
-        const t = Math.random() * Math.PI * 2;
-        const edge = heartShape(t);
-        const fill = Math.sqrt(Math.random());
-
-        heartParticles.push({
-            x: heartWidth / 2 + edge.x * 8.1 * fill,
-            y: heartHeight / 2 - edge.y * 8.1 * fill,
-            size: Math.random() * 1.8 + .5,
-            phase: Math.random() * Math.PI * 2,
-            speed: Math.random() * .04 + .01
-        });
-    }
-}
-
-function drawHeart() {
-    heartCtx.clearRect(0, 0, heartWidth, heartHeight);
-    heartTick += .025;
-
-    const pulse = 1 + Math.sin(heartTick * 2) * .035;
-
-    heartCtx.save();
-    heartCtx.translate(heartWidth / 2, heartHeight / 2);
-    heartCtx.scale(pulse, pulse);
-    heartCtx.translate(-heartWidth / 2, -heartHeight / 2);
-
-    heartParticles.forEach((p, i) => {
-        const twinkle = .35 + (
-            Math.sin(heartTick * 2 + p.phase) + 1
-        ) * .32;
-
-        heartCtx.beginPath();
-        heartCtx.arc(
-            p.x + Math.sin(heartTick + p.phase) * 1.2,
-            p.y + Math.cos(heartTick * .7 + p.phase) * 1.2,
-            p.size,
-            0,
-            Math.PI * 2
-        );
-
-        heartCtx.fillStyle = i % 5 === 0
-            ? `rgba(255,220,248,${twinkle})`
-            : `rgba(255,65,184,${twinkle})`;
-
-        heartCtx.shadowBlur = 12;
-        heartCtx.shadowColor = "#ff168e";
-        heartCtx.fill();
+function makeHeart(){
+  particles=[];
+  const s=Math.min(w/39,h/34,12);
+  const cx=w/2,cy=h/2;
+  for(let i=0;i<1050;i++){
+    const t=Math.random()*Math.PI*2,p=point(t,s);
+    const spread=Math.random()*8;
+    particles.push({
+      x:Math.random()*w,y:Math.random()*h,
+      tx:cx+p.x+(Math.random()-.5)*spread,
+      ty:cy+p.y+(Math.random()-.5)*spread,
+      r:Math.random()*2+0.6,
+      speed:.025+Math.random()*.045,
+      phase:Math.random()*6.28,
+      color:Math.random()>.32?'#ff3ca9':'#ffd0ec'
     });
-
-    heartCtx.restore();
-
-    heartCtx.textAlign = "center";
-    heartCtx.textBaseline = "middle";
-    heartCtx.font = "bold 27px monospace";
-    heartCtx.shadowBlur = 15;
-    heartCtx.shadowColor = "#ff168e";
-    heartCtx.fillStyle = "#ffffff";
-    heartCtx.fillText("I LOVE YOU", heartWidth / 2, heartHeight / 2 + 3);
-
-    heartCtx.font = "12px monospace";
-    heartCtx.fillStyle = "#ffb9e8";
-    heartCtx.fillText(
-        "ONLY FOR REMY ♡",
-        heartWidth / 2,
-        heartHeight / 2 + 27
-    );
-
-    requestAnimationFrame(drawHeart);
+  }
 }
 
-buildHeart();
-drawHeart();
-
-/* BUTTONS */
-
-function openLetter() {
-    const letter = document.getElementById("letter");
-    const open = letter.style.display === "block";
-
-    letter.style.display = open ? "none" : "block";
-
-    if (!open) {
-        setTimeout(() => {
-            letter.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }, 100);
-    }
+function drawHeart(t){
+  c.clearRect(0,0,w,h);
+  if(!heart)return;
+  const beat=1+Math.sin(t/240)*.018;
+  particles.forEach(p=>{
+    p.x+=(p.tx-p.x)*p.speed;
+    p.y+=(p.ty-p.y)*p.speed;
+    const x=w/2+(p.x-w/2)*beat;
+    const y=h/2+(p.y-h/2)*beat;
+    const tw=.6+Math.abs(Math.sin(t/350+p.phase));
+    c.beginPath();
+    c.arc(x,y,p.r*tw,0,Math.PI*2);
+    c.fillStyle=p.color;
+    c.shadowColor=p.color;c.shadowBlur=10*tw;
+    c.fill();
+  });
+  c.shadowBlur=0;
 }
 
-function showSecret() {
-    const secret = document.getElementById("secret");
-    const open = secret.style.display === "block";
-
-    secret.style.display = open ? "none" : "block";
-
-    if (!open) {
-        loveExplosion();
-        setTimeout(() => {
-            secret.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-        }, 100);
-    }
+function frame(t){
+  matrix();drawHeart(t);requestAnimationFrame(frame);
 }
+requestAnimationFrame(frame);
 
-/* DIGITAL LOVE EXPLOSION */
+function show(el){el.classList.add('on')}
+function hide(el){el.classList.remove('on')}
+function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
 
-function loveExplosion() {
-    const symbols = ["♥", "♡", "✦", "LOVE", "💗"];
-    const count = 60;
+async function play(){
+  heart=false;particles=[];
+  [num,you,are,msg].forEach(hide);
+  footer.textContent='A LITTLE SURPRISE ♡';
+  b.clearRect(0,0,w,h);
 
-    for (let i = 0; i < count; i++) {
-        const particle = document.createElement("span");
-        particle.className = "burst";
-        particle.textContent =
-            symbols[Math.floor(Math.random() * symbols.length)];
+  for(let n=3;n>=1;n--){
+    num.textContent=n;show(num);
+    await wait(950);hide(num);await wait(180);
+  }
 
-        particle.style.left = window.innerWidth / 2 + "px";
-        particle.style.top = window.innerHeight / 2 + "px";
-        particle.style.fontSize = (12 + Math.random() * 18) + "px";
+  show(you);await wait(1050);hide(you);
+  await wait(300);
+  show(are);await wait(1050);hide(are);
+  await wait(350);
 
-        particle.style.setProperty(
-            "--x",
-            (Math.random() - .5) * window.innerWidth + "px"
-        );
-
-        particle.style.setProperty(
-            "--y",
-            (Math.random() - .5) * window.innerHeight + "px"
-        );
-
-        document.body.appendChild(particle);
-
-        setTimeout(() => particle.remove(), 1100);
-    }
+  heart=true;makeHeart();
+  footer.textContent='SOMETHING FROM MY HEART ♡';
+  await wait(1900);
+  show(msg);
+  footer.textContent='MADE WITH LOVE ♡';
 }
+play();
 </script>
-
 </body>
 </html>
-```
