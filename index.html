@@ -1,156 +1,426 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Remy ♡</title>
+
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#030008;color:white;font-family:Arial,sans-serif}
-canvas{position:fixed;inset:0;width:100%;height:100%}
-#bg{z-index:0}
-#fx{z-index:1}
-.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse,transparent 15%,#030008a8 100%)}
-#scene{position:fixed;inset:0;z-index:3;display:grid;place-items:center;pointer-events:none}
-.word{position:absolute;opacity:0;transform:scale(.3);font-size:clamp(65px,16vw,145px);font-weight:900;letter-spacing:5px;color:#fff;text-shadow:0 0 8px white,0 0 25px #ff45b5,0 0 65px #ff008c;transition:opacity .65s,transform .65s}
-.word.on{opacity:1;transform:scale(1)}
-#message{position:absolute;text-align:center;opacity:0;transform:scale(.5);font-size:clamp(21px,5vw,37px);font-family:cursive;font-style:italic;line-height:1.5;color:#fff;text-shadow:0 0 8px white,0 0 22px #ff38ac,0 0 45px #ff008c;transition:opacity 1.5s,transform 1.5s}
-#message.on{opacity:1;transform:scale(1)}
-#footer{position:fixed;z-index:4;bottom:7%;width:100%;text-align:center;font-size:10px;letter-spacing:4px;color:#ff9bd7;text-shadow:0 0 12px #ff168f}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: white;
+    font-family: Georgia, 'Times New Roman', serif;
+    overflow-x: hidden;
+}
+
+#intro {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 1.5s ease;
+}
+
+#matrix {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.intro-text {
+    position: relative;
+    z-index: 2;
+    color: #ff4fa3;
+    text-align: center;
+    font-family: monospace;
+    font-size: clamp(2rem, 7vw, 5rem);
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px #ff168d, 0 0 30px #ff168d,
+                 0 0 60px #ff168d;
+    padding: 20px;
+    opacity: 0;
+    white-space: pre-line;
+}
+
+#heart {
+    position: absolute;
+    z-index: 2;
+    width: min(85vw, 440px);
+    opacity: 0;
+    filter: drop-shadow(0 0 12px #ff168d);
+    transition: opacity 1.5s ease;
+}
+
+#heart path {
+    fill: none;
+    stroke: #ff4fa3;
+    stroke-width: 2;
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+    filter: drop-shadow(0 0 8px #ff168d);
+}
+
+#heart-message {
+    position: absolute;
+    z-index: 3;
+    width: 75%;
+    text-align: center;
+    color: #ffb4d9;
+    font-size: clamp(1.1rem, 4vw, 1.8rem);
+    text-shadow: 0 0 10px #ff168d, 0 0 25px #ff168d;
+    opacity: 0;
+    line-height: 1.6;
+}
+
+#letter-page {
+    display: none;
+    min-height: 100vh;
+    padding: 45px 18px;
+    background:
+        radial-gradient(ellipse at top, #4a1234 0%, #190817 45%, #050205 100%);
+    animation: pageAppear 2s ease forwards;
+}
+
+@keyframes pageAppear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.letter-container {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.small-heading {
+    color: #ff9bc9;
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+h1 {
+    color: #ffd4e8;
+    font-size: clamp(2.2rem, 8vw, 4rem);
+    font-weight: normal;
+    text-shadow: 0 0 18px #ff168d;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #eaa6c8;
+    font-style: italic;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.photo-frame {
+    width: min(240px, 75%);
+    margin: 0 auto 28px;
+    padding: 7px;
+    border: 1px solid #ff6eb5;
+    border-radius: 14px;
+    box-shadow: 0 0 20px #ff168d55;
+    background: #210c1a;
+}
+
+.photo-frame img {
+    width: 100%;
+    display: block;
+    border-radius: 9px;
+    object-fit: cover;
+}
+
+.letter-card {
+    text-align: left;
+    padding: 27px 23px;
+    border: 1px solid #a94478;
+    border-radius: 18px;
+    background: rgba(35, 8, 25, 0.83);
+    box-shadow: 0 0 30px #ff168d18;
+    color: #f8dce9;
+    font-size: 1rem;
+    line-height: 1.95;
+}
+
+.letter-card p {
+    margin-bottom: 18px;
+}
+
+.letter-card p:last-child {
+    margin-bottom: 0;
+}
+
+.signature {
+    margin-top: 28px;
+    color: #ffacd2;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    font-style: italic;
+}
+
+.heart-divider {
+    color: #ff6eb5;
+    font-size: 1.5rem;
+    margin: 24px 0;
+    text-shadow: 0 0 15px #ff168d;
+}
+
+.footer {
+    margin-top: 30px;
+    color: #bb779a;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 480px) {
+    #letter-page { padding: 35px 14px; }
+    .letter-card { padding: 22px 18px; }
+}
 </style>
 </head>
+
 <body>
-<canvas id="bg"></canvas>
-<canvas id="fx"></canvas>
-<div class="vignette"></div>
-<div id="scene">
-  <div class="word" id="number">3</div>
-  <div class="word" id="you">YOU</div>
-  <div class="word" id="are">ARE</div>
-  <div id="message">I Love You<br>Remy ♡</div>
-</div>
-<div id="footer">MADE WITH LOVE ♡</div>
+
+<section id="intro">
+    <canvas id="matrix"></canvas>
+    <div class="intro-text" id="intro-text"></div>
+
+    <svg id="heart" viewBox="0 0 500 450" aria-hidden="true">
+        <path d="M250 410
+        C220 380 45 265 45 150
+        C45 65 155 25 250 125
+        C345 25 455 65 455 150
+        C455 265 280 380 250 410 Z"/>
+    </svg>
+
+    <div id="heart-message">I Love You Remy ♡</div>
+</section>
+
+<main id="letter-page">
+    <div class="letter-container">
+
+        <div class="small-heading">A little something for you</div>
+
+        <h1>For Remy ♡</h1>
+
+        <div class="subtitle">
+            To my favourite boy in the whole world.
+        </div>
+
+        <!--
+        If you want a photo here, upload it to the same GitHub
+        repository and replace remy.jpg with its exact filename.
+        To hide the photo, delete the entire photo-frame section.
+        -->
+
+        <div class="photo-frame">
+            <img src="remy.jpg" alt="A memory for Remy"
+                 onerror="this.parentElement.style.display='none'">
+        </div>
+
+        <div class="letter-card">
+            <p>Dear Remy,</p>
+
+            <p>
+                I don't really know where to begin, but I know that
+                there are things I wish I could say properly instead
+                of keeping them all in my head.
+            </p>
+
+            <p>
+                First of all, I'm sorry. I'm sorry for the times I
+                let my emotions get the better of me, for the times
+                I overthink, and for the moments when I might make
+                things harder than they need to be. I know I'm not
+                perfect, and I'm still learning how to understand
+                things without letting my feelings take over.
+            </p>
+
+            <p>
+                I never want you to think that I don't appreciate
+                you. I do, more than I probably manage to show.
+                Thank you for staying, for the little things you do,
+                for making me smile, and for being someone who has
+                become important to me in ways I didn't expect.
+            </p>
+
+            <p>
+                Sometimes I get scared. I overthink little things,
+                wonder if I'm doing enough, and worry about losing
+                something that means so much to me. I'm not saying
+                this to make you responsible for my feelings.
+                I just want to be honest with you.
+            </p>
+
+            <p>
+                I don't expect everything to be perfect between us.
+                I just hope we can keep being honest with each other,
+                talk things through, and learn to understand one
+                another a little better. I want to do my part too.
+            </p>
+
+            <p>
+                Remy, you are my favourite boy. Not because every
+                moment is perfect, but because the little moments
+                with you mean something to me. Your smile still has
+                a way of making it difficult for me to stay mad,
+                and sometimes I wish I could explain just how much
+                happiness you bring into my ordinary days.
+            </p>
+
+            <p>
+                I can't promise that I'll never make mistakes, but
+                I can promise that I'll keep trying to communicate
+                better, to listen, and to show my appreciation
+                instead of letting my overthinking speak for me.
+            </p>
+
+            <p>
+                Thank you for being you, Remy. I hope you know that
+                you matter to me, and that this little page is just
+                my way of reminding you that you're appreciated
+                and cared for.
+            </p>
+
+            <p>
+                Whatever happens, I'm grateful that our paths
+                crossed. And if Allah gives us the chance to keep
+                growing closer, I hope we can make that journey
+                a little kinder and better for both of us.
+            </p>
+        </div>
+
+        <div class="heart-divider">♡ &nbsp; ♡ &nbsp; ♡</div>
+
+        <div class="signature">
+            With love,<br>
+            Inas ♡
+        </div>
+
+        <div class="footer">
+            MADE WITH LOVE, JUST FOR YOU
+        </div>
+
+    </div>
+</main>
 
 <script>
-const bg=document.getElementById('bg'), b=bg.getContext('2d');
-const fx=document.getElementById('fx'), c=fx.getContext('2d');
-const num=document.getElementById('number');
-const you=document.getElementById('you');
-const are=document.getElementById('are');
-const msg=document.getElementById('message');
-const footer=document.getElementById('footer');
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+const intro = document.getElementById("intro");
+const introText = document.getElementById("intro-text");
+const heart = document.getElementById("heart");
+const heartPath = heart.querySelector("path");
+const heartMessage = document.getElementById("heart-message");
+const letterPage = document.getElementById("letter-page");
 
-let w,h,drops=[],particles=[],heart=false,start=0;
-const chars='01♡LOVEアイウエオ';
+let width, height, columns, drops;
+const fontSize = 16;
+const symbols = "アイウエオカキクケコサシスセソタチツテト010101";
+let animationFrame;
 
-function resize(){
-  const d=Math.min(devicePixelRatio||1,2);
-  w=innerWidth;h=innerHeight;
-  [bg,fx].forEach(el=>{
-    el.width=w*d;el.height=h*d;
-    el.style.width=w+'px';el.style.height=h+'px';
-  });
-  b.setTransform(d,0,0,d,0,0);
-  c.setTransform(d,0,0,d,0,0);
-  drops=Array.from({length:Math.ceil(w/16)},()=>Math.random()*-50);
-  if(heart)makeHeart();
-}
-addEventListener('resize',resize);
-resize();
-
-function matrix(){
-  b.fillStyle='rgba(3,0,8,.13)';
-  b.fillRect(0,0,w,h);
-  b.font='13px monospace';
-  drops.forEach((y,i)=>{
-    let ch=chars[Math.floor(Math.random()*chars.length)];
-    b.fillStyle=Math.random()>.82?'#ffb5e6':'#e21a8c';
-    b.shadowColor='#ff168f';b.shadowBlur=8;
-    b.fillText(ch,i*16,y*16);
-    drops[i]+=Math.random()*.6+.35;
-    if(y*16>h&&Math.random()>.96)drops[i]=0;
-  });
-  b.shadowBlur=0;
+function resizeCanvas() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    columns = Math.ceil(width / fontSize);
+    drops = Array(columns).fill(1);
 }
 
-function point(t,s){
-  return {
-    x:16*Math.pow(Math.sin(t),3)*s,
-    y:-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))*s
-  };
+function drawMatrix() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+    ctx.fillRect(0, 0, width, height);
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const char = symbols[Math.floor(Math.random() * symbols.length)];
+        ctx.fillStyle = Math.random() > 0.96 ? "#ffffff" : "#ff2998";
+        ctx.shadowColor = "#ff168d";
+        ctx.shadowBlur = 8;
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        ctx.shadowBlur = 0;
+
+        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+
+    animationFrame = requestAnimationFrame(drawMatrix);
 }
 
-function makeHeart(){
-  particles=[];
-  const s=Math.min(w/39,h/34,12);
-  const cx=w/2,cy=h/2;
-  for(let i=0;i<1050;i++){
-    const t=Math.random()*Math.PI*2,p=point(t,s);
-    const spread=Math.random()*8;
-    particles.push({
-      x:Math.random()*w,y:Math.random()*h,
-      tx:cx+p.x+(Math.random()-.5)*spread,
-      ty:cy+p.y+(Math.random()-.5)*spread,
-      r:Math.random()*2+0.6,
-      speed:.025+Math.random()*.045,
-      phase:Math.random()*6.28,
-      color:Math.random()>.32?'#ff3ca9':'#ffd0ec'
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+drawMatrix();
+
+function showText(text, duration) {
+    return new Promise(resolve => {
+        introText.textContent = text;
+        introText.style.opacity = "1";
+
+        setTimeout(() => {
+            introText.style.opacity = "0";
+            setTimeout(resolve, 650);
+        }, duration);
     });
-  }
 }
 
-function drawHeart(t){
-  c.clearRect(0,0,w,h);
-  if(!heart)return;
-  const beat=1+Math.sin(t/240)*.018;
-  particles.forEach(p=>{
-    p.x+=(p.tx-p.x)*p.speed;
-    p.y+=(p.ty-p.y)*p.speed;
-    const x=w/2+(p.x-w/2)*beat;
-    const y=h/2+(p.y-h/2)*beat;
-    const tw=.6+Math.abs(Math.sin(t/350+p.phase));
-    c.beginPath();
-    c.arc(x,y,p.r*tw,0,Math.PI*2);
-    c.fillStyle=p.color;
-    c.shadowColor=p.color;c.shadowBlur=10*tw;
-    c.fill();
-  });
-  c.shadowBlur=0;
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function frame(t){
-  matrix();drawHeart(t);requestAnimationFrame(frame);
+async function startSequence() {
+    await wait(900);
+
+    await showText("3", 800);
+    await showText("2", 800);
+    await showText("1", 800);
+
+    await showText("YOU", 1100);
+    await showText("ARE", 1100);
+
+    await showText("MY FAVOURITE BOY", 1800);
+
+    introText.style.display = "none";
+    heart.style.opacity = "1";
+
+    heartPath.style.transition =
+        "stroke-dashoffset 3s ease-in-out";
+    heartPath.style.strokeDashoffset = "0";
+
+    await wait(1800);
+    heartMessage.style.opacity = "1";
+
+    await wait(3000);
+
+    intro.style.opacity = "0";
+
+    await wait(1600);
+
+    cancelAnimationFrame(animationFrame);
+    intro.style.display = "none";
+    letterPage.style.display = "block";
+    document.body.style.overflowX = "hidden";
 }
-requestAnimationFrame(frame);
 
-function show(el){el.classList.add('on')}
-function hide(el){el.classList.remove('on')}
-function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
-
-async function play(){
-  heart=false;particles=[];
-  [num,you,are,msg].forEach(hide);
-  footer.textContent='A LITTLE SURPRISE ♡';
-  b.clearRect(0,0,w,h);
-
-  for(let n=3;n>=1;n--){
-    num.textContent=n;show(num);
-    await wait(950);hide(num);await wait(180);
-  }
-
-  show(you);await wait(1050);hide(you);
-  await wait(300);
-  show(are);await wait(1050);hide(are);
-  await wait(350);
-
-  heart=true;makeHeart();
-  footer.textContent='SOMETHING FROM MY HEART ♡';
-  await wait(1900);
-  show(msg);
-  footer.textContent='MADE WITH LOVE ♡';
-}
-play();
+startSequence();
 </script>
+
 </body>
 </html>
+```
