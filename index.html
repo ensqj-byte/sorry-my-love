@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Baby ❤️</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe0eb, #fff5f7, #ffd1df);
+      color: #77364e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 14px;
+      overflow-x: hidden;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255,255,255,0.9);
+      padding: 30px 22px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 12px 40px #bd52752b;
+      position: relative;
+      z-index: 1;
+    }
+
+    .heart {
+      font-size: 65px;
+      animation: beat 1s infinite;
+    }
+
+    h1 { color: #e05282; font-size: 30px; }
+
+    p { line-height: 1.8; }
+
+    .letter {
+      background: #fff0f5;
+      border-radius: 18px;
+      padding: 18px;
+      margin: 20px 0;
+      text-align: left;
+      line-height: 1.9;
+    }
+
+    button {
+      background: #e75480;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover { background: #c93666; }
+
+    #reply {
+      display: none;
+      margin-top: 20px;
+      color: #d6336c;
+      font-weight: bold;
+      line-height: 1.8;
+    }
+
+    .floating {
+      position: fixed;
+      bottom: -40px;
+      animation: floatUp 7s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @keyframes beat {
+      50% { transform: scale(1.18); }
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="heart">❤️</div>
+
+    <h1>I'm Sorry, Baby 🥺</h1>
+
+    <p>
+      Untuk orang yang paling istimewa dalam hidup saya.
+      💗
+    </p>
+
+    <div class="letter">
+      Dear Baby,
+
+      <p>
+        Saya minta maaf kalau saya sudah buat baby sedih,
+        kecewa atau terluka. Saya tahu perkataan maaf saja
+        tak semestinya boleh hilangkan semua rasa sedih baby.
+      </p>
+
+      <p>
+        Saya tak sempurna, tapi saya mahu belajar daripada
+        kesilapan saya dan cuba menjadi lebih baik untuk kita.
+        Perasaan baby penting untuk saya, dan saya tak mahu
+        ambil mudah tentang hati baby.
+      </p>
+
+      <p>
+        Kalau baby perlukan masa, saya akan cuba hormati.
+        Saya cuma nak baby tahu yang saya betul-betul menyesal
+        dan saya sayang baby. ❤️
+      </p>
+
+      <p style="text-align:right">
+        Ikhlas daripada,<br>
+        <strong>Your Love 💌</strong>
+      </p>
+    </div>
+
+    <p>Baby, boleh saya minta satu peluang untuk perbaiki semuanya?</p>
+
+    <button onclick="showLove()">
+      Tekan sini, Baby 💗
+    </button>
+
+    <div id="reply">
+      Terima kasih sebab sudi baca sampai habis. 🥹💕
+      <br><br>
+      Saya sayang baby. Saya akan cuba buktikan
+      melalui perbuatan, bukan kata-kata sahaja. ❤️
+    </div>
+  </main>
+
+  <script>
+    function showLove() {
+      document.getElementById("reply").style.display = "block";
+    }
+
+    const hearts = ["❤️", "💕", "💗", "💖", "♡"];
+
+    for (let i = 0; i < 18; i++) {
+      const heart = document.createElement("div");
+      heart.className = "floating";
+      heart.textContent = hearts[i % hearts.length];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDelay = Math.random() * 7 + "s";
+      heart.style.fontSize = (18 + Math.random() * 20) + "px";
+      document.body.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
