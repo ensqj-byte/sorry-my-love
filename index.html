@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Remy ♡</title>
+<title>For My Babyyy ♡</title>
 
 <style>
 * {
@@ -15,8 +15,8 @@
 
 body {
     background: #000;
-    color: white;
-    font-family: Georgia, 'Times New Roman', serif;
+    color: #fff;
+    font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
 }
 
@@ -24,12 +24,12 @@ body {
     position: fixed;
     inset: 0;
     background: #000;
-    z-index: 10;
+    z-index: 100;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
-    transition: opacity 1.5s ease;
+    transition: opacity 1.6s ease;
 }
 
 #matrix {
@@ -39,104 +39,114 @@ body {
     height: 100%;
 }
 
-.intro-text {
-    position: relative;
-    z-index: 2;
-    color: #ff4fa3;
+#intro-text {
+    position: absolute;
+    z-index: 3;
+    width: 95%;
+    padding: 15px;
     text-align: center;
-    font-family: monospace;
-    font-size: clamp(2rem, 7vw, 5rem);
-    font-weight: bold;
-    letter-spacing: 4px;
-    text-shadow: 0 0 10px #ff168d, 0 0 30px #ff168d,
-                 0 0 60px #ff168d;
-    padding: 20px;
-    opacity: 0;
     white-space: pre-line;
+    font-family: monospace;
+    font-size: clamp(2rem, 7vw, 4.8rem);
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #ff69b4;
+    text-shadow: 0 0 8px #ff1493,
+                 0 0 20px #ff1493,
+                 0 0 45px #ff1493;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s, transform 0.6s;
 }
 
-#heart {
+#intro-text.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#heart-wrap {
     position: absolute;
     z-index: 2;
-    width: min(85vw, 440px);
+    width: min(94vw, 500px);
+    aspect-ratio: 1 / 0.9;
     opacity: 0;
-    filter: drop-shadow(0 0 12px #ff168d);
-    transition: opacity 1.5s ease;
+    transition: opacity 1s ease;
 }
 
-#heart path {
-    fill: none;
-    stroke: #ff4fa3;
-    stroke-width: 2;
-    stroke-dasharray: 1500;
-    stroke-dashoffset: 1500;
-    filter: drop-shadow(0 0 8px #ff168d);
+#heart-canvas {
+    width: 100%;
+    height: 100%;
 }
 
 #heart-message {
     position: absolute;
-    z-index: 3;
-    width: 75%;
+    z-index: 4;
+    width: 63%;
+    left: 50%;
+    top: 49%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    color: #ffb4d9;
-    font-size: clamp(1.1rem, 4vw, 1.8rem);
-    text-shadow: 0 0 10px #ff168d, 0 0 25px #ff168d;
+    color: #ffd1e8;
+    font-size: clamp(0.8rem, 3.4vw, 1.3rem);
+    line-height: 1.65;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff1493,
+                 0 0 18px #ff1493;
     opacity: 0;
-    line-height: 1.6;
+    transition: opacity 1.5s ease;
 }
 
 #letter-page {
     display: none;
     min-height: 100vh;
-    padding: 45px 18px;
+    padding: 45px 16px;
     background:
-        radial-gradient(ellipse at top, #4a1234 0%, #190817 45%, #050205 100%);
-    animation: pageAppear 2s ease forwards;
+        radial-gradient(ellipse at top, #50142f 0%, #220b1a 40%, #080308 100%);
+    animation: revealPage 1.8s ease both;
 }
 
-@keyframes pageAppear {
-    from { opacity: 0; transform: translateY(20px); }
+@keyframes revealPage {
+    from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .letter-container {
-    width: 100%;
-    max-width: 650px;
+    max-width: 660px;
     margin: 0 auto;
     text-align: center;
 }
 
-.small-heading {
-    color: #ff9bc9;
+.eyebrow {
+    color: #ff9bcb;
+    font-family: monospace;
     font-size: 0.8rem;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+    letter-spacing: 4px;
+    margin-bottom: 17px;
 }
 
 h1 {
-    color: #ffd4e8;
-    font-size: clamp(2.2rem, 8vw, 4rem);
+    font-size: clamp(2.3rem, 8vw, 4rem);
     font-weight: normal;
-    text-shadow: 0 0 18px #ff168d;
+    color: #ffe1ef;
+    text-shadow: 0 0 18px #ff1493;
     margin-bottom: 12px;
 }
 
 .subtitle {
-    color: #eaa6c8;
+    color: #f2b3d1;
     font-style: italic;
-    margin-bottom: 30px;
     font-size: 1.05rem;
+    margin-bottom: 30px;
 }
 
 .photo-frame {
-    width: min(240px, 75%);
+    width: min(235px, 75%);
     margin: 0 auto 28px;
     padding: 7px;
-    border: 1px solid #ff6eb5;
+    border: 1px solid #ff75b9;
     border-radius: 14px;
-    box-shadow: 0 0 20px #ff168d55;
     background: #210c1a;
+    box-shadow: 0 0 22px #ff149355;
 }
 
 .photo-frame img {
@@ -147,13 +157,13 @@ h1 {
 }
 
 .letter-card {
-    text-align: left;
-    padding: 27px 23px;
+    padding: 28px 24px;
     border: 1px solid #a94478;
     border-radius: 18px;
-    background: rgba(35, 8, 25, 0.83);
-    box-shadow: 0 0 30px #ff168d18;
-    color: #f8dce9;
+    background: rgba(33, 8, 24, 0.86);
+    box-shadow: 0 0 30px #ff14931c;
+    color: #f8dfeb;
+    text-align: left;
     font-size: 1rem;
     line-height: 1.95;
 }
@@ -166,31 +176,42 @@ h1 {
     margin-bottom: 0;
 }
 
-.signature {
-    margin-top: 28px;
-    color: #ffacd2;
-    font-size: 1.15rem;
-    line-height: 1.9;
-    font-style: italic;
+.letter-highlight {
+    color: #ffadd2;
 }
 
-.heart-divider {
-    color: #ff6eb5;
-    font-size: 1.5rem;
-    margin: 24px 0;
-    text-shadow: 0 0 15px #ff168d;
+.divider-heart {
+    margin: 25px 0;
+    color: #ff70b6;
+    font-size: 1.7rem;
+    text-shadow: 0 0 15px #ff1493;
+    letter-spacing: 9px;
+}
+
+.signature {
+    color: #ffb2d5;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.9;
 }
 
 .footer {
-    margin-top: 30px;
-    color: #bb779a;
-    font-size: 0.8rem;
+    color: #c17c9f;
+    font-family: monospace;
+    font-size: 0.72rem;
     letter-spacing: 2px;
+    margin-top: 30px;
 }
 
 @media (max-width: 480px) {
-    #letter-page { padding: 35px 14px; }
-    .letter-card { padding: 22px 18px; }
+    #letter-page {
+        padding: 35px 13px;
+    }
+
+    .letter-card {
+        padding: 22px 18px;
+        font-size: 0.96rem;
+    }
 }
 </style>
 </head>
@@ -199,117 +220,171 @@ h1 {
 
 <section id="intro">
     <canvas id="matrix"></canvas>
-    <div class="intro-text" id="intro-text"></div>
 
-    <svg id="heart" viewBox="0 0 500 450" aria-hidden="true">
-        <path d="M250 410
-        C220 380 45 265 45 150
-        C45 65 155 25 250 125
-        C345 25 455 65 455 150
-        C455 265 280 380 250 410 Z"/>
-    </svg>
+    <div id="intro-text"></div>
 
-    <div id="heart-message">I Love You Remy ♡</div>
+    <div id="heart-wrap">
+        <canvas id="heart-canvas"></canvas>
+
+        <div id="heart-message">
+            beli karet di warung ayu<br>
+            i will never be tired of youu<br>
+            sayaaaangg!!!! ♡
+        </div>
+    </div>
 </section>
 
 <main id="letter-page">
     <div class="letter-container">
 
-        <div class="small-heading">A little something for you</div>
+        <div class="eyebrow">A LITTLE LETTER FROM MY HEART</div>
 
         <h1>For Remy ♡</h1>
 
         <div class="subtitle">
-            To my favourite boy in the whole world.
+            To my favourite boy, my babyyy.
         </div>
-
-        <!--
-        If you want a photo here, upload it to the same GitHub
-        repository and replace remy.jpg with its exact filename.
-        To hide the photo, delete the entire photo-frame section.
-        -->
 
         <div class="photo-frame">
-            <img src="remy.jpg" alt="A memory for Remy"
-                 onerror="this.parentElement.style.display='none'">
+            <img
+                src="remy.jpg"
+                alt="A memory for Remy"
+                onerror="this.parentElement.style.display='none'">
         </div>
 
-        <div class="letter-card">
-            <p>Dear Remy,</p>
+        <article class="letter-card">
+
+            <p>Dear Remy, my babyyy,</p>
 
             <p>
-                I don't really know where to begin, but I know that
-                there are things I wish I could say properly instead
-                of keeping them all in my head.
+                I don't really know where to begin, but there are so
+                many things I wish I could tell you properly. Maybe
+                I don't always know how to explain what is inside my
+                heart, so I'm writing it all here, hoping that somehow
+                these words can say the things I struggle to say.
             </p>
 
             <p>
-                First of all, I'm sorry. I'm sorry for the times I
-                let my emotions get the better of me, for the times
-                I overthink, and for the moments when I might make
-                things harder than they need to be. I know I'm not
-                perfect, and I'm still learning how to understand
-                things without letting my feelings take over.
+                First of all, <span class="letter-highlight">Inas minta maaf, sayang.</span>
+                I'm sorry for the times I let my emotions get the
+                better of me, for overthinking little things, and for
+                the moments when I make things more difficult than
+                they need to be. I'm sorry if my words or actions
+                ever make you feel tired. I never want to make you
+                feel like loving or understanding me is a burden.
             </p>
 
             <p>
-                I never want you to think that I don't appreciate
-                you. I do, more than I probably manage to show.
-                Thank you for staying, for the little things you do,
-                for making me smile, and for being someone who has
-                become important to me in ways I didn't expect.
+                I know I'm not perfect, baby. Sometimes I get moody,
+                sometimes I think too much, and sometimes I feel
+                things so deeply that I don't know what to do with
+                them. I'm still learning how to communicate better
+                instead of letting my emotions speak for me. I know
+                saying sorry doesn't magically fix everything, but
+                I want you to know that I mean it.
             </p>
 
             <p>
-                Sometimes I get scared. I overthink little things,
-                wonder if I'm doing enough, and worry about losing
-                something that means so much to me. I'm not saying
-                this to make you responsible for my feelings.
-                I just want to be honest with you.
+                Thank you for being part of my days, for the little
+                things you do, for making me smile without even
+                trying, and for giving me moments that I find myself
+                remembering long after they've passed. You have
+                become someone really special to me, more than I
+                probably manage to show sometimes.
             </p>
 
             <p>
-                I don't expect everything to be perfect between us.
-                I just hope we can keep being honest with each other,
-                talk things through, and learn to understand one
-                another a little better. I want to do my part too.
+                Remy, do you know how much I love your smile?
+                Sometimes I can be upset about something, but then
+                you smile and suddenly it's so hard for me to stay
+                mad at you. And your eyes, sayang. There is something
+                about them that makes me want to keep looking at you
+                and memorising the little details of your face.
+                You probably don't even realise how much those
+                little things mean to me.
             </p>
 
             <p>
-                Remy, you are my favourite boy. Not because every
-                moment is perfect, but because the little moments
-                with you mean something to me. Your smile still has
-                a way of making it difficult for me to stay mad,
-                and sometimes I wish I could explain just how much
-                happiness you bring into my ordinary days.
+                I won't pretend that I never get scared. Sometimes
+                I overthink, wonder if I'm doing enough, or worry
+                about losing someone who has become important to me.
+                But I don't want those fears to become something
+                that hurts us. I want to learn to trust, to listen,
+                and to talk to you more gently when something is
+                bothering me.
             </p>
 
             <p>
-                I can't promise that I'll never make mistakes, but
-                I can promise that I'll keep trying to communicate
-                better, to listen, and to show my appreciation
-                instead of letting my overthinking speak for me.
+                I don't need us to be perfect all the time. I just
+                hope we can be honest with each other, understand
+                each other better, and give each other room to grow.
+                I want to do my part too, baby. I want to be someone
+                who brings you comfort and happiness, not someone
+                who makes your days feel heavier.
             </p>
 
             <p>
-                Thank you for being you, Remy. I hope you know that
-                you matter to me, and that this little page is just
-                my way of reminding you that you're appreciated
-                and cared for.
+                <span class="letter-highlight">
+                    You are my favourite boy, Remy.
+                </span>
+                And it's not just because of the sweet moments or
+                because you make me happy. It's because somewhere
+                along the way, the little things about you became
+                important to me. Talking to you, laughing with you,
+                teasing you, and even the ordinary moments have
+                found a special place in my heart.
             </p>
 
             <p>
-                Whatever happens, I'm grateful that our paths
-                crossed. And if Allah gives us the chance to keep
-                growing closer, I hope we can make that journey
-                a little kinder and better for both of us.
+                If I could ask for one thing, it would be for us to
+                keep trying to understand each other. If something
+                hurts, I hope we can talk about it. If one of us
+                makes a mistake, I hope we can learn from it. I
+                don't expect you to read my mind, and I know I
+                can't read yours either. I just want us to keep
+                choosing honesty and kindness.
             </p>
-        </div>
 
-        <div class="heart-divider">♡ &nbsp; ♡ &nbsp; ♡</div>
+            <p>
+                And baby, please don't ever think that I don't
+                appreciate you. I do. Even when I don't say it
+                properly, even when I'm being difficult, and even
+                when I don't know how to express myself, I am
+                grateful for you. I care about you so much, and
+                I never want you to doubt that just because I
+                sometimes struggle to show it the right way.
+            </p>
+
+            <p>
+                If Allah gives us the chance to keep growing closer,
+                I hope we can make that journey a beautiful one.
+                Not a perfect one, but one where we learn, forgive,
+                laugh, communicate, and make good memories together.
+            </p>
+
+            <p>
+                So, once again, Inas minta maaf for the things I've
+                done that have hurt you. I'm going to keep working
+                on myself, not only through words but through the
+                way I treat you. You deserve patience, honesty,
+                affection, and effort too.
+            </p>
+
+            <p>
+                <span class="letter-highlight">
+                    I will never be tired of youu, sayaaaangg!!!! ♡
+                </span>
+                I hope this little page makes you smile, even if
+                just for a moment. It's made with love, by someone
+                who is really glad to have you in her life.
+            </p>
+
+        </article>
+
+        <div class="divider-heart">♡ ♡ ♡</div>
 
         <div class="signature">
-            With love,<br>
+            With all my love,<br>
             Inas ♡
         </div>
 
@@ -321,101 +396,190 @@ h1 {
 </main>
 
 <script>
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-const intro = document.getElementById("intro");
-const introText = document.getElementById("intro-text");
-const heart = document.getElementById("heart");
-const heartPath = heart.querySelector("path");
-const heartMessage = document.getElementById("heart-message");
-const letterPage = document.getElementById("letter-page");
+/* PINK DIGITAL RAIN */
 
-let width, height, columns, drops;
+const matrixCanvas = document.getElementById("matrix");
+const matrixCtx = matrixCanvas.getContext("2d");
+
+let matrixWidth;
+let matrixHeight;
+let drops = [];
 const fontSize = 16;
-const symbols = "アイウエオカキクケコサシスセソタチツテト010101";
-let animationFrame;
+const characters = "01アイウエオカキクケコサシスセソ";
 
-function resizeCanvas() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    columns = Math.ceil(width / fontSize);
-    drops = Array(columns).fill(1);
+function resizeMatrix() {
+    matrixWidth = matrixCanvas.width = window.innerWidth;
+    matrixHeight = matrixCanvas.height = window.innerHeight;
+
+    const columns = Math.ceil(matrixWidth / fontSize);
+    drops = Array.from({ length: columns }, () =>
+        Math.random() * -50
+    );
 }
 
 function drawMatrix() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-    ctx.fillRect(0, 0, width, height);
-    ctx.font = fontSize + "px monospace";
+    matrixCtx.fillStyle = "rgba(0, 0, 0, 0.09)";
+    matrixCtx.fillRect(0, 0, matrixWidth, matrixHeight);
+    matrixCtx.font = fontSize + "px monospace";
 
     for (let i = 0; i < drops.length; i++) {
-        const char = symbols[Math.floor(Math.random() * symbols.length)];
-        ctx.fillStyle = Math.random() > 0.96 ? "#ffffff" : "#ff2998";
-        ctx.shadowColor = "#ff168d";
-        ctx.shadowBlur = 8;
-        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-        ctx.shadowBlur = 0;
+        const char = characters[
+            Math.floor(Math.random() * characters.length)
+        ];
 
-        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+        matrixCtx.fillStyle =
+            Math.random() > 0.96 ? "#ffffff" : "#ff2998";
+
+        matrixCtx.shadowColor = "#ff168d";
+        matrixCtx.shadowBlur = 8;
+        matrixCtx.fillText(
+            char,
+            i * fontSize,
+            drops[i] * fontSize
+        );
+        matrixCtx.shadowBlur = 0;
+
+        if (drops[i] * fontSize > matrixHeight &&
+            Math.random() > 0.975) {
             drops[i] = 0;
         }
-        drops[i]++;
+
+        drops[i] += 0.65;
     }
 
-    animationFrame = requestAnimationFrame(drawMatrix);
+    requestAnimationFrame(drawMatrix);
 }
 
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
+window.addEventListener("resize", resizeMatrix);
+resizeMatrix();
 drawMatrix();
 
-function showText(text, duration) {
-    return new Promise(resolve => {
-        introText.textContent = text;
-        introText.style.opacity = "1";
 
-        setTimeout(() => {
-            introText.style.opacity = "0";
-            setTimeout(resolve, 650);
-        }, duration);
-    });
+/* PARTICLE HEART */
+
+const heartCanvas = document.getElementById("heart-canvas");
+const heartCtx = heartCanvas.getContext("2d");
+
+let heartParticles = [];
+let heartAnimationStarted = false;
+
+function resizeHeartCanvas() {
+    const rect = heartCanvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    heartCanvas.width = rect.width * dpr;
+    heartCanvas.height = rect.height * dpr;
+
+    heartCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    makeHeartParticles(rect.width, rect.height);
 }
+
+function makeHeartParticles(w, h) {
+    heartParticles = [];
+
+    const scale = Math.min(w / 34, h / 30);
+    const cx = w / 2;
+    const cy = h / 2 + 1;
+
+    for (let i = 0; i < 1000; i++) {
+        const t = Math.random() * Math.PI * 2;
+
+        const x = 16 * Math.pow(Math.sin(t), 3);
+        const y = 13 * Math.cos(t)
+                - 5 * Math.cos(2 * t)
+                - 2 * Math.cos(3 * t)
+                - Math.cos(4 * t);
+
+        const px = cx + x * scale;
+        const py = cy - y * scale;
+
+        heartParticles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            tx: px,
+            ty: py,
+            size: Math.random() * 1.8 + 0.5,
+            alpha: Math.random() * 0.7 + 0.3,
+            speed: Math.random() * 0.035 + 0.012
+        });
+    }
+}
+
+function drawHeart() {
+    const rect = heartCanvas.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+
+    heartCtx.clearRect(0, 0, w, h);
+
+    for (const p of heartParticles) {
+        p.x += (p.tx - p.x) * p.speed;
+        p.y += (p.ty - p.y) * p.speed;
+
+        heartCtx.beginPath();
+        heartCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        heartCtx.fillStyle =
+            `rgba(255, 65, 165, ${p.alpha})`;
+        heartCtx.shadowColor = "#ff1493";
+        heartCtx.shadowBlur = 10;
+        heartCtx.fill();
+    }
+
+    heartCtx.shadowBlur = 0;
+    requestAnimationFrame(drawHeart);
+}
+
+resizeHeartCanvas();
+drawHeart();
+
+window.addEventListener("resize", resizeHeartCanvas);
+
+
+/* INTRO SEQUENCE */
+
+const introText = document.getElementById("intro-text");
+const heartWrap = document.getElementById("heart-wrap");
+const heartMessage = document.getElementById("heart-message");
+const intro = document.getElementById("intro");
+const letterPage = document.getElementById("letter-page");
 
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+async function showText(text, duration) {
+    introText.textContent = text;
+    introText.classList.add("show");
+
+    await wait(duration);
+
+    introText.classList.remove("show");
+    await wait(650);
+}
+
 async function startSequence() {
-    await wait(900);
+    await wait(1000);
 
     await showText("3", 800);
     await showText("2", 800);
     await showText("1", 800);
 
-    await showText("YOU", 1100);
-    await showText("ARE", 1100);
-
-    await showText("MY FAVOURITE BOY", 1800);
+    await showText("BABYYY", 1300);
+    await showText("INAS MINTA MAAAF", 2200);
 
     introText.style.display = "none";
-    heart.style.opacity = "1";
 
-    heartPath.style.transition =
-        "stroke-dashoffset 3s ease-in-out";
-    heartPath.style.strokeDashoffset = "0";
+    heartWrap.style.opacity = "1";
+    await wait(1200);
 
-    await wait(1800);
     heartMessage.style.opacity = "1";
-
-    await wait(3000);
+    await wait(4500);
 
     intro.style.opacity = "0";
+    await wait(1700);
 
-    await wait(1600);
-
-    cancelAnimationFrame(animationFrame);
     intro.style.display = "none";
     letterPage.style.display = "block";
-    document.body.style.overflowX = "hidden";
 }
 
 startSequence();
