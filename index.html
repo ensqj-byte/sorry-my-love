@@ -4,550 +4,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Baby ♡</title>
+<title>For Remy ♡</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fffaf5;font-family:Georgia,serif;overflow-x:hidden}
 
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #fffaf5;
-    overflow-x: hidden;
+#intro{
+ position:fixed;inset:0;background:#030003;color:#ff4fa3;
+ z-index:10;display:flex;align-items:center;justify-content:center;
+ flex-direction:column;overflow:hidden;transition:opacity 1.5s;
 }
+#matrix{position:absolute;inset:0;width:100%;height:100%}
+#intro-text{position:relative;z-index:2;text-align:center;
+ font-family:Arial,sans-serif;font-weight:bold;text-shadow:0 0 10px #ff1493,0 0 30px #ff1493}
+#countdown{font-size:100px;animation:pulse .8s infinite alternate}
+#main-words{font-size:clamp(28px,7vw,62px);line-height:1.5;letter-spacing:2px}
 
-/* INTRO SCREEN */
-#intro {
-    position: fixed;
-    inset: 0;
-    background: #030003;
-    color: #ff4fa3;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    overflow: hidden;
-    transition: opacity 1.5s ease;
+#heart-wrap{
+ display:none;position:relative;z-index:2;width:min(92vw,410px);
+ min-height:420px;align-items:center;justify-content:center;flex-direction:column;
 }
-
-#matrix {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+#heart-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.remy-photo{
+ position:relative;z-index:2;width:125px;height:125px;object-fit:cover;
+ object-position:center 35%;border-radius:50%;border:3px solid #ff79bc;
+ box-shadow:0 0 15px #ff1493,0 0 35px #ff1493;margin:15px auto;
 }
-
-#intro-text {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    text-shadow:
-        0 0 8px #ff1493,
-        0 0 20px #ff1493,
-        0 0 45px #ff007f;
+#heart-message{
+ position:relative;z-index:2;text-align:center;color:white;
+ font:bold clamp(14px,3.8vw,19px) Arial,sans-serif;line-height:1.8;
+ text-shadow:0 0 8px #ff1493,0 0 22px #ff1493;padding:8px;
 }
+#continue-text{position:absolute;bottom:20px;color:#ff9acb;
+ font:12px Arial,sans-serif;letter-spacing:3px;z-index:3;
+ animation:pulse 1s infinite alternate}
 
-#countdown {
-    font-size: clamp(65px, 15vw, 120px);
-    animation: pulse 0.8s infinite alternate;
-}
-
-#main-words {
-    font-size: clamp(27px, 7vw, 65px);
-    line-height: 1.4;
-    letter-spacing: 3px;
-}
-
-#heart-wrap {
-    display: none;
-    position: relative;
-    width: min(85vw, 400px);
-    height: min(85vw, 400px);
-    max-height: 400px;
-    max-width: 400px;
-    z-index: 2;
-    align-items: center;
-    justify-content: center;
-}
-
-#heart-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#heart-message {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    font-size: clamp(15px, 4vw, 23px);
-    line-height: 1.8;
-    text-shadow:
-        0 0 8px #ff1493,
-        0 0 20px #ff1493,
-        0 0 35px #ff1493;
-    padding: 20px;
-}
-
-#continue-text {
-    position: absolute;
-    bottom: 25px;
-    color: #ff9acb;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    animation: pulse 1.2s infinite alternate;
-    z-index: 3;
-}
-
-/* LETTER PAGE */
-#letter-page {
-    min-height: 100vh;
-    display: none;
-    padding: 35px 15px;
-    background:
-        radial-gradient(ellipse at top, #fffdf9 0%, #f9eee1 100%);
-    color: #3b302b;
-}
-
-.letter-card {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: clamp(25px, 6vw, 55px);
-    background: #fffdf9;
-    border: 1px solid #ead9c8;
-    box-shadow: 0 12px 40px rgba(90, 58, 36, 0.10);
-    line-height: 1.9;
-    animation: appear 1.5s ease;
-}
-
-.letter-top {
-    text-align: center;
-    color: #a56a72;
-    letter-spacing: 3px;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    margin-bottom: 25px;
-}
-
-.letter-card h1 {
-    text-align: center;
-    font-weight: normal;
-    font-size: clamp(28px, 6vw, 42px);
-    margin-bottom: 8px;
-    color: #70454b;
-}
-
-.subtitle {
-    text-align: center;
-    font-style: italic;
-    color: #a47a7c;
-    margin-bottom: 30px;
-}
-
-.letter-card p {
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-
-.signature {
-    margin-top: 35px;
-    text-align: right;
-    color: #70454b;
-    font-style: italic;
-    font-size: 20px;
-}
-
-.bottom-heart {
-    text-align: center;
-    margin-top: 30px;
-    color: #bd7d87;
-    font-size: 24px;
-}
-
-@keyframes pulse {
-    from { opacity: 0.65; transform: scale(0.97); }
-    to { opacity: 1; transform: scale(1.04); }
-}
-
-@keyframes appear {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 480px) {
-    #letter-page {
-        padding: 18px 10px;
-    }
-
-    .letter-card p {
-        font-size: 15px;
-    }
-}
+#letter-page{display:none;min-height:100vh;padding:30px 14px;
+ background:radial-gradient(ellipse at top,#fffdf9,#f7ebdf);color:#3b302b}
+.letter-card{max-width:720px;margin:auto;padding:clamp(24px,6vw,55px);
+ background:#fffdf9;border:1px solid #ead9c8;
+ box-shadow:0 12px 40px #5a3a2415;line-height:1.9;animation:appear 1.5s}
+.letter-top{text-align:center;color:#a56a72;letter-spacing:3px;
+ font:12px Arial,sans-serif;margin-bottom:25px}
+.letter-card h1{text-align:center;font-weight:normal;
+ font-size:clamp(28px,6vw,42px);color:#70454b}
+.subtitle{text-align:center;font-style:italic;color:#a47a7c;margin:10px 0 30px}
+.letter-card p{margin-bottom:20px;font-size:16px}
+.signature{text-align:right;margin-top:35px;color:#70454b;font-style:italic;font-size:20px}
+.bottom-heart{text-align:center;margin-top:30px;color:#bd7d87;font-size:24px}
+@keyframes pulse{from{opacity:.65;transform:scale(.97)}to{opacity:1;transform:scale(1.04)}}
+@keyframes appear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.letter-card p{font-size:15px}}
 </style>
 </head>
 
 <body>
-
-<!-- NEON INTRO -->
 <section id="intro">
-    <canvas id="matrix"></canvas>
+ <canvas id="matrix"></canvas>
 
-    <div id="intro-text">
-        <div id="countdown">3</div>
-        <div id="main-words" style="display:none;">
-            BABYYY<br>
-            INAS MINTA MAAAF ♡
-        </div>
-    </div>
+ <div id="intro-text">
+  <div id="countdown">3</div>
+  <div id="main-words" style="display:none">
+   BABYYY<br>INAS MINTA MAAAF ♡
+  </div>
+ </div>
 
-    <div id="heart-wrap">
-        <canvas id="heart-canvas"></canvas>
-        <div id="heart-message">
-            beli karet di warung ayu<br>
-            i will never be tired of youu<br>
-            sayaaaangg!!!! ♡
-        </div>
-    </div>
+ <div id="heart-wrap">
+  <canvas id="heart-canvas"></canvas>
+  <img class="remy-photo" src="remy.jpg" alt="Remy"
+       onerror="this.style.display='none'">
+  <div id="heart-message">
+   beli karet di warung ayu<br>
+   i will never be tired of youu<br>
+   sayaaaangg!!!! ♡
+  </div>
+ </div>
 
-    <div id="continue-text" style="display:none;">
-        FOR YOU, MY LOVE ♡
-    </div>
+ <div id="continue-text" style="display:none">FOR YOU, MY LOVE ♡</div>
 </section>
 
-<!-- LOVE LETTER -->
 <section id="letter-page">
-    <article class="letter-card">
-        <div class="letter-top">A LITTLE LETTER FROM MY HEART</div>
+ <article class="letter-card">
+  <div class="letter-top">A LITTLE LETTER FROM MY HEART</div>
+  <h1>For My Baby, Remy ♡</h1>
+  <div class="subtitle">A letter I wish I could say while looking into your eyes.</div>
 
-        <h1>For My Baby, Remy ♡</h1>
-        <div class="subtitle">A letter I wish I could say while looking into your eyes.</div>
+  <p>Hi, my love.</p>
 
-        <p>Hi, my love.</p>
+  <p>First of all, Inas wants to say that Inas is really sorry. Sorry for the times Inas let her emotions get the best of her, for the times Inas became moody, and for the moments when Inas struggled to explain what she was feeling.</p>
 
-        <p>
-            First of all, Inas wants to say that Inas is really sorry.
-            Sorry for the times Inas let her emotions get the best of her,
-            for the times Inas became moody, for the things Inas said without
-            thinking properly, and for the moments when loving Inas might
-            have felt a little difficult.
-        </p>
+  <p>Inas knows that saying sorry cannot magically make everything okay. Inas doesn't want these words to be just another sweet paragraph. Inas genuinely wants to understand, to learn, and to become better at loving Remy.</p>
 
-        <p>
-            Inas knows that saying sorry cannot magically make everything
-            okay, and Inas doesn't want these words to be just another
-            paragraph that sounds sweet for a moment. Inas genuinely wants
-            to understand, to learn, and to become better at loving Remy.
-            Not because Inas is afraid of being imperfect, but because
-            Remy matters so much to Inas.
-        </p>
+  <p>Sometimes Inas overthinks. Sometimes she gets emotional over little things, and sometimes she doesn't know how to explain what's happening inside her head. Inas is sorry if her actions have ever made Remy feel tired, confused, or unappreciated.</p>
 
-        <p>
-            Sometimes Inas overthinks. Sometimes Inas gets emotional over
-            little things, and sometimes Inas struggles to explain what
-            is happening inside her own head. It doesn't mean Remy deserves
-            to carry all of that. Inas is sorry if her actions have ever
-            made Remy feel tired, confused, or unappreciated.
-        </p>
+  <p>The truth is, Inas appreciates Remy more than she always knows how to show. The conversations, random moments, laughter, your smile, and the way your eyes look when Inas gets to see you are little things she keeps in her heart.</p>
 
-        <p>
-            The truth is, Inas appreciates Remy more than she always knows
-            how to show. Even the smallest things can mean so much to Inas.
-            The conversations, the random moments, the laughter, the way
-            Remy smiles, and the way his eyes look when Inas gets to see
-            him. These are little things that Inas finds herself keeping
-            in her heart.
-        </p>
+  <p>And your smile, baby. Inas doesn't think Remy understands how difficult it is for her to stay angry when Remy smiles at her. One little smile and suddenly Inas forgets half the things she was trying to be mad about. Your cat-like smile is one of those little things Inas adores.</p>
 
-        <p>
-            And your smile, baby. Inas doesn't think Remy understands how
-            difficult it is for Inas to stay angry when Remy smiles at her.
-            It's unfair, honestly. One little smile and suddenly Inas
-            forgets half of the things she was trying to be mad about.
-            Your cat-like smile is one of those little things Inas adores
-            more than she can explain.
-        </p>
+  <p>Inas doesn't expect us to be perfect all the time. We are still learning about each other and learning how to communicate when things don't go as planned. Inas hopes we can keep being honest, listen to each other, and try to understand before misunderstandings grow bigger.</p>
 
-        <p>
-            Inas doesn't expect us to be perfect all the time. We are still
-            learning about each other, learning how to communicate, and
-            learning how to handle the moments when things don't go as
-            planned. Inas just hopes that we can keep being honest with
-            each other, listen to each other, and try to understand
-            before letting misunderstandings grow bigger.
-        </p>
+  <p>Inas doesn't want Remy to become someone else just to make her happy. Inas likes Remy for who he is. She wants both of us to feel comfortable being ourselves while still learning to treat each other better.</p>
 
-        <p>
-            If Inas ever makes Remy feel like he isn't enough, please know
-            that it is never what Inas wants. Remy doesn't have to become
-            someone else just to make Inas happy. Inas likes Remy for who
-            he is, and Inas wants both of us to feel comfortable being
-            ourselves while still learning to treat each other better.
-        </p>
+  <p>Inas is grateful that our paths crossed. Sometimes she thinks about how everything started, how we began talking, and how something that seemed so small slowly became something that means so much.</p>
 
-        <p>
-            Inas is grateful that our paths crossed. Sometimes Inas thinks
-            about how everything started, how we began talking, and how
-            something that seemed so small slowly became something that
-            means so much. Inas never wants to take those moments for
-            granted.
-        </p>
+  <p>Inas can't promise she will never make mistakes again. But she can promise to keep trying, to be more mindful of her words, to communicate better, and to remember that Remy has feelings too. Inas wants her love to be something Remy can feel through her actions, not just something he reads in messages.</p>
 
-        <p>
-            Inas can't promise that she will never make mistakes again.
-            But Inas can promise to keep trying, to be more mindful of
-            her words, to communicate better, and to remember that Remy
-            has feelings too. Inas wants her love to be something Remy
-            can feel through her actions, not just something he reads
-            in messages like this.
-        </p>
+  <p>If Allah gives us the chance to keep growing together, Inas hopes we will learn to be more patient with each other and appreciate the little things along the way.</p>
 
-        <p>
-            If Allah gives us the chance to keep growing together, Inas
-            hopes we will learn to be more patient with each other and
-            appreciate the little things along the way. One step at a
-            time, without forcing everything to be perfect.
-        </p>
+  <p>So, baby, I'm sorry for the times I hurt you, even when I didn't mean to. Behind all my overthinking and emotions, there is someone who cares about you deeply and is still learning how to express that love in a better way.</p>
 
-        <p>
-            So, baby, I'm sorry for the times I hurt you, even when I
-            didn't mean to. I'm sorry for the moments when my emotions
-            spoke louder than my heart. Behind all of that, there is
-            someone who cares about you deeply and is still learning
-            how to express that love in a better way.
-        </p>
+  <p>Thank you for being part of my days, for the memories we have made, and for the little things that make me smile when I think of you.</p>
 
-        <p>
-            Thank you for being part of my days, for the memories we
-            have made, and for the little things that make me smile
-            when I think of you. Inas hopes there will be many more
-            happy moments for us to look back on.
-        </p>
+  <p>I love you, Remy. Not just on the easy days, but also on the days when we need to slow down, talk things through, and understand each other a little more.</p>
 
-        <p>
-            I love you, Remy. Not just on the easy days, not just when
-            everything feels sweet, but also on the days when we need
-            to slow down, talk things through, and understand each other
-            a little more.
-        </p>
+  <p>I'm sorry, sayang. ♡</p>
 
-        <p>
-            I'm sorry, sayang. ♡
-        </p>
-
-        <div class="signature">
-            Always with love,<br>
-            Inas ♡
-        </div>
-
-        <div class="bottom-heart">♡ ♡ ♡</div>
-    </article>
+  <div class="signature">Always with love,<br>Inas ♡</div>
+  <div class="bottom-heart">♡ ♡ ♡</div>
+ </article>
 </section>
 
 <script>
-/* DIGITAL RAIN: INAS MINTA MAAF + LOVE + HEARTS */
-const matrixCanvas = document.getElementById("matrix");
-const matrixCtx = matrixCanvas.getContext("2d");
+/* HACKER-STYLE DIGITAL RAIN */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+const symbols="1010101010100101010101010101";
+const fontSize=16;
+let columns,drops;
 
-let fontSize = 17;
-let columns = 0;
-let drops = [];
-let rainWords = [];
-let rainColors = [];
-
-function resizeMatrix() {
-    matrixCanvas.width = window.innerWidth;
-    matrixCanvas.height = window.innerHeight;
-
-    columns = Math.ceil(matrixCanvas.width / fontSize);
-    drops = [];
-    rainWords = [];
-    rainColors = [];
-
-    const words = [
-        "INAS MINTA MAAF",
-        "LOVE",
-        "LOVE",
-        "♡",
-        "INAS",
-        "MINTA",
-        "MAAAF",
-        "MY LOVE"
-    ];
-
-    for (let i = 0; i < columns; i++) {
-        drops[i] = Math.random() * -100;
-        rainWords[i] = words[Math.floor(Math.random() * words.length)];
-        rainColors[i] = Math.random() > 0.5 ? "#ff4fa3" : "#ff9acb";
-    }
+function resize(){
+ canvas.width=innerWidth;
+ canvas.height=innerHeight;
+ columns=Math.ceil(canvas.width/fontSize);
+ drops=Array.from({length:columns},()=>Math.random()*-80);
 }
+function drawRain(){
+ ctx.fillStyle="rgba(3,0,3,0.12)";
+ ctx.fillRect(0,0,canvas.width,canvas.height);
+ ctx.font="bold "+fontSize+"px monospace";
+ ctx.shadowColor="#ff1493";
+ ctx.shadowBlur=10;
 
-function drawMatrix() {
-    matrixCtx.fillStyle = "rgba(3, 0, 3, 0.12)";
-    matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-
-    matrixCtx.font = "bold " + fontSize + "px Arial";
-
-    for (let i = 0; i < drops.length; i++) {
-        const word = rainWords[i];
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
-
-        matrixCtx.fillStyle = rainColors[i];
-        matrixCtx.shadowColor = "#ff1493";
-        matrixCtx.shadowBlur = 12;
-        matrixCtx.fillText(word, x, y);
-        matrixCtx.shadowBlur = 0;
-
-        if (y > matrixCanvas.height && Math.random() > 0.965) {
-            drops[i] = Math.random() * -30;
-            const words = [
-                "INAS MINTA MAAF",
-                "LOVE",
-                "LOVE",
-                "♡",
-                "INAS",
-                "MINTA",
-                "MAAAF",
-                "MY LOVE"
-            ];
-
-            rainWords[i] = words[Math.floor(Math.random() * words.length)];
-            rainColors[i] = Math.random() > 0.5 ? "#ff4fa3" : "#ff9acb";
-        }
-
-        drops[i] += 0.35;
-    }
-
-    requestAnimationFrame(drawMatrix);
+ for(let i=0;i<columns;i++){
+  const char=symbols[Math.floor(Math.random()*symbols.length)];
+  ctx.fillStyle=Math.random()>.8?"#ffffff":"#ff4fa3";
+  ctx.fillText(char,i*fontSize,drops[i]*fontSize);
+  if(drops[i]*fontSize>canvas.height&&Math.random()>.97){
+   drops[i]=Math.random()*-25;
+  }
+  drops[i]+=.65;
+ }
+ ctx.shadowBlur=0;
+ requestAnimationFrame(drawRain);
 }
+addEventListener("resize",resize);
+resize();
+drawRain();
 
-window.addEventListener("resize", resizeMatrix);
-resizeMatrix();
-drawMatrix();
+/* COUNTDOWN */
+const countdown=document.getElementById("countdown");
+const mainWords=document.getElementById("main-words");
+const introText=document.getElementById("intro-text");
+const heartWrap=document.getElementById("heart-wrap");
+const continueText=document.getElementById("continue-text");
+const intro=document.getElementById("intro");
+const letterPage=document.getElementById("letter-page");
 
-/* COUNTDOWN AND INTRO SEQUENCE */
-const countdown = document.getElementById("countdown");
-const mainWords = document.getElementById("main-words");
-const introText = document.getElementById("intro-text");
-const heartWrap = document.getElementById("heart-wrap");
-const continueText = document.getElementById("continue-text");
-const intro = document.getElementById("intro");
-const letterPage = document.getElementById("letter-page");
+let count=3;
+const timer=setInterval(()=>{
+ count--;
+ if(count>0){
+  countdown.textContent=count;
+ }else{
+  clearInterval(timer);
+  countdown.style.display="none";
+  mainWords.style.display="block";
 
-let count = 3;
+  setTimeout(()=>{
+   introText.style.display="none";
+   heartWrap.style.display="flex";
+   continueText.style.display="block";
+   startHeart();
+  },2400);
 
-const countdownTimer = setInterval(() => {
-    count--;
-
-    if (count > 0) {
-        countdown.textContent = count;
-    } else {
-        clearInterval(countdownTimer);
-        countdown.style.display = "none";
-        mainWords.style.display = "block";
-
-        setTimeout(() => {
-            introText.style.display = "none";
-            heartWrap.style.display = "flex";
-            continueText.style.display = "block";
-            startHeart();
-        }, 2400);
-
-        setTimeout(() => {
-            intro.style.opacity = "0";
-
-            setTimeout(() => {
-                intro.style.display = "none";
-                letterPage.style.display = "block";
-                document.body.style.overflowX = "hidden";
-            }, 1500);
-        }, 8500);
-    }
-}, 1000);
+  setTimeout(()=>{
+   intro.style.opacity="0";
+   setTimeout(()=>{
+    intro.style.display="none";
+    letterPage.style.display="block";
+   },1500);
+  },8500);
+ }
+},1000);
 
 /* GLOWING PARTICLE HEART */
-function startHeart() {
-    const canvas = document.getElementById("heart-canvas");
-    const ctx = canvas.getContext("2d");
+function startHeart(){
+ const c=document.getElementById("heart-canvas");
+ const g=c.getContext("2d");
+ const size=410;
+ c.width=size;c.height=size;
+ const particles=[];
 
-    const heartSize = 400;
-    canvas.width = heartSize;
-    canvas.height = heartSize;
+ function point(t){
+  return {
+   x:size/2+16*Math.pow(Math.sin(t),3)*10,
+   y:size/2-(13*Math.cos(t)-5*Math.cos(2*t)
+   -2*Math.cos(3*t)-Math.cos(4*t))*10
+  };
+ }
 
-    const particles = [];
-    const totalParticles = 850;
+ for(let i=0;i<900;i++){
+  const p=point(Math.random()*Math.PI*2);
+  const spread=Math.random();
+  particles.push({
+   x:size/2+(p.x-size/2)*spread,
+   y:size/2+(p.y-size/2)*spread,
+   r:Math.random()*2+0.5,
+   phase:Math.random()*6.28
+  });
+ }
 
-    function heartPoint(t) {
-        const x = 16 * Math.pow(Math.sin(t), 3);
-        const y =
-            13 * Math.cos(t) -
-            5 * Math.cos(2 * t) -
-            2 * Math.cos(3 * t) -
-            Math.cos(4 * t);
-
-        return {
-            x: heartSize / 2 + x * 10,
-            y: heartSize / 2 - y * 10
-        };
-    }
-
-    for (let i = 0; i < totalParticles; i++) {
-        const t = Math.random() * Math.PI * 2;
-        const point = heartPoint(t);
-        const spread = Math.random();
-
-        particles.push({
-            x: heartSize / 2 + (point.x - heartSize / 2) * spread,
-            y: heartSize / 2 + (point.y - heartSize / 2) * spread,
-            size: Math.random() * 2.3 + 0.5,
-            phase: Math.random() * Math.PI * 2,
-            speed: Math.random() * 0.06 + 0.01
-        });
-    }
-
-    function animateHeart() {
-        ctx.clearRect(0, 0, heartSize, heartSize);
-
-        const time = Date.now() * 0.002;
-
-        for (const p of particles) {
-            const glow = (Math.sin(time + p.phase) + 1) / 2;
-
-            ctx.beginPath();
-            ctx.arc(
-                p.x + Math.sin(time * p.speed) * 1.5,
-                p.y + Math.cos(time * p.speed) * 1.5,
-                p.size + glow,
-                0,
-                Math.PI * 2
-            );
-
-            ctx.fillStyle = `rgba(255, ${70 + glow * 80}, ${150 + glow * 80}, ${0.45 + glow * 0.55})`;
-            ctx.shadowColor = "#ff1493";
-            ctx.shadowBlur = 8 + glow * 12;
-            ctx.fill();
-        }
-
-        ctx.shadowBlur = 0;
-        requestAnimationFrame(animateHeart);
-    }
-
-    animateHeart();
+ function animate(){
+  g.clearRect(0,0,size,size);
+  const t=Date.now()*.002;
+  for(const p of particles){
+   const glow=(Math.sin(t+p.phase)+1)/2;
+   g.beginPath();
+   g.arc(p.x,p.y,p.r+glow,0,Math.PI*2);
+   g.fillStyle=`rgba(255,${70+glow*80},${150+glow*80},${.5+glow*.5})`;
+   g.shadowColor="#ff1493";
+   g.shadowBlur=8+glow*12;
+   g.fill();
+  }
+  g.shadowBlur=0;
+  requestAnimationFrame(animate);
+ }
+ animate();
 }
 </script>
-
 </body>
 </html>
 ```
