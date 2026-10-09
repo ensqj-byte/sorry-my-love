@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Favourite Boyy ♡</title>
+<title>For My Favourite Boy ♡</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -12,37 +12,52 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:#030303;color:white;font-family:'Nunito',sans-serif;overflow-x:hidden}
-#matrix{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.92}
+#matrix{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
 .screen{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 18px;overflow:hidden}
 .glow{position:absolute;width:280px;height:280px;border-radius:50%;background:#ff3297;filter:blur(120px);opacity:.22;pointer-events:none}
-.glow.one{top:5%;left:-120px}.glow.two{bottom:5%;right:-120px}
-.label{font-size:.75rem;letter-spacing:5px;text-transform:uppercase;color:#fff;margin-bottom:25px;text-shadow:0 0 12px #ff65b0}
-h1{font-family:'Pacifico',cursive;color:white;font-size:clamp(2.6rem,10vw,5.4rem);line-height:1.45;text-shadow:0 0 8px white,0 0 20px #ff5eaa,0 0 42px #ff2f92;animation:pulse 2s infinite alternate}
-@keyframes pulse{to{transform:scale(1.035);text-shadow:0 0 12px white,0 0 28px #ff5eaa,0 0 55px #ff2f92}}
-.fav-text{font-size:clamp(2rem,7vw,4.2rem);font-family:'Nunito',sans-serif;font-weight:900;letter-spacing:1px;line-height:1.3}
-.subtitle{color:#ffe2ef;font-size:1rem;line-height:1.8;margin-top:18px}
-.cute-line{font-family:'Pacifico',cursive;font-size:clamp(1.4rem,5vw,2.5rem);line-height:1.7;color:#fff;text-shadow:0 0 10px #ff85c2,0 0 25px #ff3297;margin:18px 0}
-button{font-family:'Nunito',sans-serif;font-weight:900;border:1px solid #ff9bca;border-radius:40px;background:linear-gradient(135deg,#ff55a5,#d91572);color:white;padding:14px 27px;font-size:1rem;cursor:pointer;box-shadow:0 0 25px #ff2f9255;transition:.25s;margin-top:22px}
+.glow.one{top:5%;left:-120px}
+.glow.two{bottom:5%;right:-120px}
+.label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:#fff;margin-bottom:22px;text-shadow:0 0 12px #ff65b0}
+h1{font-family:'Pacifico',cursive;color:white;font-size:clamp(2.5rem,9vw,5rem);line-height:1.45;text-shadow:0 0 8px white,0 0 20px #ff5eaa,0 0 42px #ff2f92}
+button{font-family:'Nunito',sans-serif;font-weight:900;border:1px solid #ff9bca;border-radius:40px;background:linear-gradient(135deg,#ff55a5,#d91572);color:white;padding:14px 27px;font-size:1rem;cursor:pointer;box-shadow:0 0 25px #ff2f9255;transition:.25s;margin-top:24px}
 button:hover{transform:scale(1.05);box-shadow:0 0 35px #ff2f92aa}
-#messageScreen,#jokeScreen,#heartScreen{display:none}
-#messageScreen,#jokeScreen{animation:appear .9s ease}
-@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.subtitle{color:#ffe2ef;font-size:1rem;line-height:1.8;margin-top:16px}
+.cute-line{font-family:'Pacifico',cursive;font-size:clamp(1.35rem,5vw,2.3rem);line-height:1.8;color:#fff;text-shadow:0 0 10px #ff85c2,0 0 25px #ff3297;margin-top:20px}
+#introScreen{background:rgba(0,0,0,.94)}
+.hacker-status{color:#ff3b9d;font:700 12px monospace;letter-spacing:3px;margin-bottom:22px;animation:glitch .18s infinite}
+.terminal{width:min(100%,480px);text-align:left;font:12px/2 monospace;color:#ff65b0;margin-bottom:18px;overflow-wrap:anywhere;text-shadow:0 0 8px #ff1688}
+.terminal p{opacity:0;animation:terminalLine .35s forwards}
+.terminal p:nth-child(1){animation-delay:.3s}
+.terminal p:nth-child(2){animation-delay:.8s}
+.terminal p:nth-child(3){animation-delay:1.3s}
+.terminal p:nth-child(4){animation-delay:1.8s}
+.terminal p:nth-child(5){animation-delay:2.3s}
+.terminal .access{color:white;text-shadow:0 0 12px #ff2f92}
+@keyframes terminalLine{to{opacity:1}}
+@keyframes glitch{0%,100%{transform:translateX(0)}25%{transform:translateX(2px)}50%{transform:translateX(-2px)}}
+#loveReveal{display:none;width:100%;animation:reveal .8s ease}
+.typewriter{font-family:'Nunito',sans-serif;font-size:clamp(2rem,8vw,4.2rem);font-weight:900;line-height:1.4;color:white;text-shadow:0 0 10px white,0 0 25px #ff3297;overflow-wrap:anywhere}
+@keyframes reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+#jokeScreen,#countdownScreen,#heartScreen{display:none}
 .count{font-size:clamp(5rem,20vw,9rem);font-weight:900;text-shadow:0 0 20px #ff3297,0 0 50px #ff3297}
 .heart-area{position:relative;width:280px;height:230px;display:flex;align-items:center;justify-content:center;margin:25px auto}
 .heart{position:relative;width:95px;height:95px;background:#ff328c;transform:rotate(-45deg);box-shadow:0 0 20px #ff328c,0 0 55px #ff328c,0 0 90px #ff328c;animation:beat 1.25s infinite}
 .heart:before,.heart:after{content:"";position:absolute;width:95px;height:95px;border-radius:50%;background:#ff328c}
-.heart:before{top:-47px;left:0}.heart:after{top:0;left:47px}
+.heart:before{top:-47px;left:0}
+.heart:after{top:0;left:47px}
 .heart-symbol{position:absolute;z-index:2;font-size:43px;color:white;text-shadow:0 0 15px white}
 @keyframes beat{50%{transform:rotate(-45deg) scale(1.1)}}
 .particle{position:absolute;color:#ffacd4;text-shadow:0 0 12px #ff3297;animation:float 3s linear forwards;pointer-events:none}
 @keyframes float{from{transform:translateY(35px) scale(.5);opacity:0}25%{opacity:1}to{transform:translateY(-130px) scale(1.3);opacity:0}}
+
+/* LETTER */
 #letterSection{display:none;position:relative;z-index:2;background:#fdf7f0;color:#453b3e;min-height:100vh;padding:55px 16px 70px}
 .letter-wrap{width:min(100%,700px);margin:auto;text-align:center}
 .letter-top{font-size:.75rem;letter-spacing:4px;color:#b36c86;text-transform:uppercase;margin-bottom:22px}
 .photo-frame{width:min(260px,75vw);margin:0 auto 30px;padding:9px;background:white;border-radius:17px;box-shadow:0 8px 28px #9b6d7c25;transform:rotate(-2deg);border:1px solid #f1dce4}
 .remy-photo{display:block;width:100%;height:auto;max-height:350px;object-fit:cover;border-radius:10px}
 .photo-caption{font-family:'Pacifico',cursive;color:#a65c78;font-size:1.05rem;margin-top:12px}
-.letter-heading{font-family:'Pacifico',cursive;color:#b45b7c;font-size:clamp(1.8rem,7vw,2.7rem);margin-bottom:10px;text-shadow:none;animation:none}
+.letter-heading{font-family:'Pacifico',cursive;color:#b45b7c;font-size:clamp(1.8rem,7vw,2.7rem);margin-bottom:10px}
 .letter-subheading{color:#997984;font-size:.9rem;margin-bottom:30px}
 .letter-paper{background:#fffdf9;border:1px solid #f0e2d9;border-radius:17px;padding:clamp(22px,6vw,42px);text-align:left;box-shadow:0 12px 35px #876c5c12}
 .letter-paper p{font-family:'Quicksand',sans-serif;font-size:1rem;line-height:1.95;margin-bottom:18px;color:#504348;overflow-wrap:anywhere}
@@ -56,50 +71,64 @@ button:hover{transform:scale(1.05);box-shadow:0 0 35px #ff2f92aa}
 <body>
 <canvas id="matrix"></canvas>
 
-<!-- INTRO -->
+<!-- 1: HACKER SCREEN AND TYPEWRITER INTRO -->
 <section class="screen" id="introScreen">
-  <div class="glow one"></div><div class="glow two"></div>
-  <p class="label">incoming message ♡</p>
-  <h1>BABYYY</h1>
-  <p class="fav-text">YOU ARE MY<br>FAVOURITE BOYY ♡</p>
-  <p class="subtitle">someone has a little something for you...</p>
-  <button onclick="showJoke()">OPEN THIS, BABY ♡</button>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="hacker-status" id="hackerStatus">⚠ SYSTEM BREACH DETECTED ⚠</div>
+
+  <div class="terminal" id="terminal">
+    <p>&gt; INITIALIZING CONNECTION...</p>
+    <p>&gt; ACCESSING ENCRYPTED FILES...</p>
+    <p>&gt; 01010101 10101010 01010101</p>
+    <p>&gt; DECRYPTING SECRET MESSAGE...</p>
+    <p class="access">&gt; ACCESS GRANTED ♡</p>
+  </div>
+
+  <div id="loveReveal">
+    <p class="label">a secret message for you</p>
+    <h1 class="typewriter" id="typeText"></h1>
+
+    <div id="poem" style="display:none">
+      <p class="cute-line">
+        Ikan hiu makan kepiting,<br>
+        lebiiu my everythinggg 🦈💗
+      </p>
+      <p class="subtitle">hehe, i love annoying youuu 🤏🏻</p>
+    </div>
+
+    <button id="continueBtn" style="display:none" onclick="startCountdown()">
+      CONTINUE, BABYYY ♡
+    </button>
+  </div>
 </section>
 
-<!-- SWEET MESSAGE -->
-<section class="screen" id="jokeScreen">
-  <div class="glow one"></div><div class="glow two"></div>
-  <p class="label">a very important message</p>
-  <h1 style="font-size:clamp(2.2rem,8vw,4rem)">HEHEHE ♡</h1>
-  <p class="cute-line">
-    Ikan hiu makan kepiting,<br>
-    lebiiu my everythinggg 🦈💗
-  </p>
-  <p class="subtitle">hehe, i love annoying youuu 🤏🏻</p>
-  <button onclick="startCountdown()">OKAY NOW CLICK THIS 💌</button>
-</section>
-
-<!-- COUNTDOWN -->
-<section class="screen" id="countdownScreen" style="display:none">
+<!-- 2: COUNTDOWN -->
+<section class="screen" id="countdownScreen">
   <div class="glow one"></div>
   <div class="count" id="countNumber">3</div>
   <p class="subtitle">loading something from my heart...</p>
 </section>
 
-<!-- HEART INTRO: NO PHOTO HERE -->
+<!-- 3: GLOWING HEART, NO PHOTO INSIDE -->
 <section class="screen" id="heartScreen">
-  <div class="glow one"></div><div class="glow two"></div>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
   <p class="label">for my favourite person</p>
+
   <div class="heart-area" id="heartArea">
     <div class="heart"></div>
     <div class="heart-symbol">♡</div>
   </div>
+
   <h1 style="font-size:clamp(2rem,7vw,3.7rem)">I'm Sorry, Baby</h1>
   <p class="subtitle">i have something i want to tell you...</p>
   <button onclick="openLetter()">OPEN YOUR LETTER 💌</button>
 </section>
 
-<!-- LETTER: REMY'S PHOTO IS ABOVE THE LETTER -->
+<!-- 4: REMY PHOTO ABOVE THE LETTER -->
 <section id="letterSection">
   <div class="letter-wrap">
     <p class="letter-top">a little piece of my heart</p>
@@ -149,58 +178,105 @@ button:hover{transform:scale(1.05);box-shadow:0 0 35px #ff2f92aa}
 </section>
 
 <script>
-/* LOTS OF FALLING 0 AND 1 */
+/* HACKER DIGITAL RAIN */
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
 let w=0,h=0,fontSize=15,drops=[];
 
 function resizeMatrix(){
   const dpr=Math.min(window.devicePixelRatio||1,2);
-  w=window.innerWidth;h=window.innerHeight;
-  canvas.width=w*dpr;canvas.height=h*dpr;
-  canvas.style.width=w+"px";canvas.style.height=h+"px";
+  w=window.innerWidth;
+  h=window.innerHeight;
+  canvas.width=w*dpr;
+  canvas.height=h*dpr;
+  canvas.style.width=w+"px";
+  canvas.style.height=h+"px";
   ctx.setTransform(dpr,0,0,dpr,0,0);
   const columns=Math.ceil(w/fontSize);
   drops=Array.from({length:columns},()=>Math.random()*(h/fontSize)*-1);
 }
+
 function drawMatrix(){
   ctx.fillStyle="rgba(0,0,0,0.12)";
   ctx.fillRect(0,0,w,h);
   ctx.font="bold "+fontSize+"px monospace";
+
   for(let i=0;i<drops.length;i++){
     const digit=Math.random()>.5?"1":"0";
-    const x=i*fontSize,y=drops[i]*fontSize;
-    ctx.fillStyle=Math.random()>.97?"#ffffff":(Math.random()>.3?"#ff2f92":"#ff9acb");
-    ctx.shadowBlur=8;ctx.shadowColor="#ff2f92";
-    ctx.fillText(digit,x,y);ctx.shadowBlur=0;
+    const x=i*fontSize;
+    const y=drops[i]*fontSize;
+
+    ctx.fillStyle=Math.random()>.97?"#ffffff":
+      (Math.random()>.3?"#ff2f92":"#ff9acb");
+    ctx.shadowBlur=8;
+    ctx.shadowColor="#ff2f92";
+    ctx.fillText(digit,x,y);
+    ctx.shadowBlur=0;
+
     drops[i]+=(Math.random()>.75?2.2:1.25);
     if(y>h&&Math.random()>.82)drops[i]=Math.random()*-25;
   }
   requestAnimationFrame(drawMatrix);
 }
-resizeMatrix();drawMatrix();
+resizeMatrix();
+drawMatrix();
 window.addEventListener("resize",resizeMatrix);
 
-/* SCREEN TRANSITIONS */
-function showJoke(){
-  document.getElementById("introScreen").style.display="none";
-  document.getElementById("jokeScreen").style.display="flex";
-  window.scrollTo(0,0);
-}
+/* TYPEWRITER INTRO AUTOMATICALLY PLAYS */
+window.addEventListener("load",()=>{
+  const terminal=document.getElementById("terminal");
+  const status=document.getElementById("hackerStatus");
+  const reveal=document.getElementById("loveReveal");
+  const typeText=document.getElementById("typeText");
+  const poem=document.getElementById("poem");
+  const continueBtn=document.getElementById("continueBtn");
+
+  setTimeout(()=>{
+    terminal.style.transition="opacity .5s";
+    terminal.style.opacity="0";
+    status.textContent="SECRET MESSAGE FOUND";
+  },3500);
+
+  setTimeout(()=>{
+    terminal.style.display="none";
+    status.style.display="none";
+    reveal.style.display="block";
+
+    const message="YOU ARE MY FAVOURITE BOY ♡";
+    let i=0;
+
+    function typeNext(){
+      if(i<message.length){
+        typeText.textContent+=message.charAt(i);
+        i++;
+        setTimeout(typeNext,100);
+      }else{
+        setTimeout(()=>{
+          poem.style.display="block";
+          setTimeout(()=>{
+            continueBtn.style.display="inline-block";
+          },1000);
+        },600);
+      }
+    }
+    typeNext();
+  },4100);
+});
+
+/* COUNTDOWN THEN HEART */
 function startCountdown(){
-  document.getElementById("jokeScreen").style.display="none";
+  document.getElementById("introScreen").style.display="none";
   document.getElementById("countdownScreen").style.display="flex";
   window.scrollTo(0,0);
+
   let n=3;
   const el=document.getElementById("countNumber");
   el.textContent=n;
+
   const timer=setInterval(()=>{
     n--;
     if(n>0){
       el.textContent=n;
-      el.style.animation="none";
-      void el.offsetWidth;
-      el.style.animation="appear .5s ease";
     }else{
       clearInterval(timer);
       document.getElementById("countdownScreen").style.display="none";
@@ -208,6 +284,8 @@ function startCountdown(){
     }
   },1000);
 }
+
+/* OPEN THE LETTER */
 function openLetter(){
   document.getElementById("heartScreen").style.display="none";
   const letter=document.getElementById("letterSection");
@@ -217,6 +295,7 @@ function openLetter(){
 
 /* FLOATING HEART PARTICLES */
 const heartArea=document.getElementById("heartArea");
+
 function createParticle(){
   const p=document.createElement("span");
   p.className="particle";
