@@ -4,675 +4,231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Baby ♡</title>
+<title>For My Favourite Boyy ♡</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #050505;
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    overflow-x: hidden;
-}
-
-#matrix {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.9;
-    pointer-events: none;
-}
-
-.screen {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 35px 18px;
-    overflow: hidden;
-}
-
-.glow {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: #ff2f92;
-    filter: blur(130px);
-    opacity: 0.22;
-    pointer-events: none;
-}
-
-.top-glow {
-    top: 15%;
-    left: -120px;
-}
-
-.bottom-glow {
-    right: -120px;
-    bottom: 10%;
-}
-
-.small-label {
-    color: #ffffff;
-    font-size: 0.76rem;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 22px;
-    text-shadow: 0 0 12px #ff70b8;
-}
-
-.main-title {
-    color: #ffffff;
-    font-family: 'Pacifico', cursive;
-    font-size: clamp(2.7rem, 10vw, 5.8rem);
-    line-height: 1.35;
-    text-shadow:
-        0 0 5px #fff,
-        0 0 15px #ff9acb,
-        0 0 35px #ff2f92;
-    animation: titlePulse 2s ease-in-out infinite alternate;
-}
-
-.apology-title {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: clamp(1.8rem, 7vw, 4rem);
-    color: #ffffff;
-    letter-spacing: 1px;
-    margin-top: 12px;
-    text-shadow:
-        0 0 8px #ffffff,
-        0 0 20px #ff70b8,
-        0 0 40px #ff2f92;
-}
-
-.subtitle {
-    color: #ffe5f1;
-    margin-top: 18px;
-    font-size: 1rem;
-    letter-spacing: 1px;
-}
-
-@keyframes titlePulse {
-    from {
-        transform: scale(1);
-        text-shadow: 0 0 8px #fff, 0 0 20px #ff70b8;
-    }
-    to {
-        transform: scale(1.035);
-        text-shadow: 0 0 12px #fff, 0 0 30px #ff2f92, 0 0 55px #ff2f92;
-    }
-}
-
-.countdown {
-    font-size: clamp(5rem, 20vw, 9rem);
-    font-weight: 900;
-    color: #ffffff;
-    text-shadow: 0 0 20px #ff4ca0, 0 0 55px #ff2f92;
-    animation: countPop 0.8s ease;
-}
-
-@keyframes countPop {
-    0% { transform: scale(0.2); opacity: 0; }
-    70% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-#countdownScreen {
-    display: none;
-}
-
-#mainScreen {
-    display: none;
-}
-
-.heart-area {
-    position: relative;
-    width: min(280px, 75vw);
-    height: 245px;
-    margin: 25px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.heart {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background: #ff328c;
-    transform: rotate(-45deg);
-    box-shadow:
-        0 0 20px #ff328c,
-        0 0 55px #ff328c,
-        0 0 90px #ff328c;
-    animation: heartBeat 1.3s ease-in-out infinite;
-}
-
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: #ff328c;
-}
-
-.heart::before {
-    top: -50px;
-    left: 0;
-}
-
-.heart::after {
-    top: 0;
-    left: 50px;
-}
-
-.heart-symbol {
-    position: absolute;
-    z-index: 2;
-    font-size: 40px;
-    color: white;
-    transform: translateY(-4px);
-    text-shadow: 0 0 15px white;
-}
-
-@keyframes heartBeat {
-    0%, 100% { transform: rotate(-45deg) scale(0.92); }
-    50% { transform: rotate(-45deg) scale(1.08); }
-}
-
-.particle {
-    position: absolute;
-    color: #ffb6d8;
-    text-shadow: 0 0 12px #ff2f92;
-    pointer-events: none;
-    animation: floatUp 3s linear infinite;
-}
-
-@keyframes floatUp {
-    from {
-        transform: translateY(50px) scale(0.5);
-        opacity: 0;
-    }
-    25% { opacity: 1; }
-    to {
-        transform: translateY(-130px) scale(1.3);
-        opacity: 0;
-    }
-}
-
-.open-button {
-    border: 1px solid #ff8fc3;
-    background: linear-gradient(135deg, #ff4b9b, #d91471);
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
-    font-weight: 900;
-    padding: 14px 27px;
-    border-radius: 40px;
-    cursor: pointer;
-    box-shadow: 0 0 25px #ff2f9255;
-    transition: 0.25s;
-    margin-top: 20px;
-}
-
-.open-button:hover {
-    transform: translateY(-3px) scale(1.04);
-    box-shadow: 0 0 35px #ff2f92aa;
-}
-
-#letterSection {
-    display: none;
-    position: relative;
-    z-index: 2;
-    padding: 55px 16px 70px;
-    background: #fdf7f0;
-    color: #453b3e;
-    min-height: 100vh;
-}
-
-.letter-wrap {
-    width: min(100%, 700px);
-    margin: 0 auto;
-    text-align: center;
-}
-
-.letter-top {
-    font-size: 0.78rem;
-    letter-spacing: 4px;
-    color: #b36c86;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-}
-
-.photo-frame {
-    width: min(260px, 75vw);
-    margin: 0 auto 27px;
-    padding: 9px;
-    background: white;
-    border-radius: 17px;
-    box-shadow: 0 8px 28px #9b6d7c25;
-    transform: rotate(-2deg);
-    border: 1px solid #f1dce4;
-}
-
-.remy-photo {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.photo-caption {
-    color: #a65c78;
-    font-family: 'Pacifico', cursive;
-    font-size: 1.05rem;
-    margin-top: 12px;
-}
-
-.letter-heading {
-    font-family: 'Pacifico', cursive;
-    color: #b45b7c;
-    font-size: clamp(1.8rem, 7vw, 2.7rem);
-    margin-bottom: 10px;
-}
-
-.letter-subheading {
-    color: #997984;
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-}
-
-.letter-paper {
-    background: #fffdf9;
-    border: 1px solid #f0e2d9;
-    border-radius: 17px;
-    padding: clamp(22px, 6vw, 42px);
-    text-align: left;
-    box-shadow: 0 12px 35px #876c5c12;
-}
-
-.letter-paper p {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1rem;
-    line-height: 1.95;
-    margin-bottom: 18px;
-    color: #504348;
-    overflow-wrap: anywhere;
-}
-
-.letter-paper .dear {
-    font-family: 'Pacifico', cursive;
-    color: #b45b7c;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-}
-
-.signature {
-    font-family: 'Pacifico', cursive;
-    color: #b45b7c;
-    font-size: 1.35rem;
-    text-align: right;
-    margin-top: 25px;
-}
-
-.footer-heart {
-    color: #d66b91;
-    font-size: 1.4rem;
-    margin-top: 25px;
-}
-
-@media (max-width: 480px) {
-    .screen {
-        padding: 25px 16px;
-    }
-
-    .heart-area {
-        transform: scale(0.9);
-        margin: 10px auto;
-    }
-
-    .letter-paper p {
-        font-size: 0.96rem;
-    }
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#030303;color:white;font-family:'Nunito',sans-serif;overflow-x:hidden}
+#matrix{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.92}
+.screen{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 18px;overflow:hidden}
+.glow{position:absolute;width:280px;height:280px;border-radius:50%;background:#ff3297;filter:blur(120px);opacity:.22;pointer-events:none}
+.glow.one{top:5%;left:-120px}.glow.two{bottom:5%;right:-120px}
+.label{font-size:.75rem;letter-spacing:5px;text-transform:uppercase;color:#fff;margin-bottom:25px;text-shadow:0 0 12px #ff65b0}
+h1{font-family:'Pacifico',cursive;color:white;font-size:clamp(2.6rem,10vw,5.4rem);line-height:1.45;text-shadow:0 0 8px white,0 0 20px #ff5eaa,0 0 42px #ff2f92;animation:pulse 2s infinite alternate}
+@keyframes pulse{to{transform:scale(1.035);text-shadow:0 0 12px white,0 0 28px #ff5eaa,0 0 55px #ff2f92}}
+.fav-text{font-size:clamp(2rem,7vw,4.2rem);font-family:'Nunito',sans-serif;font-weight:900;letter-spacing:1px;line-height:1.3}
+.subtitle{color:#ffe2ef;font-size:1rem;line-height:1.8;margin-top:18px}
+.cute-line{font-family:'Pacifico',cursive;font-size:clamp(1.4rem,5vw,2.5rem);line-height:1.7;color:#fff;text-shadow:0 0 10px #ff85c2,0 0 25px #ff3297;margin:18px 0}
+button{font-family:'Nunito',sans-serif;font-weight:900;border:1px solid #ff9bca;border-radius:40px;background:linear-gradient(135deg,#ff55a5,#d91572);color:white;padding:14px 27px;font-size:1rem;cursor:pointer;box-shadow:0 0 25px #ff2f9255;transition:.25s;margin-top:22px}
+button:hover{transform:scale(1.05);box-shadow:0 0 35px #ff2f92aa}
+#messageScreen,#jokeScreen,#heartScreen{display:none}
+#messageScreen,#jokeScreen{animation:appear .9s ease}
+@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.count{font-size:clamp(5rem,20vw,9rem);font-weight:900;text-shadow:0 0 20px #ff3297,0 0 50px #ff3297}
+.heart-area{position:relative;width:280px;height:230px;display:flex;align-items:center;justify-content:center;margin:25px auto}
+.heart{position:relative;width:95px;height:95px;background:#ff328c;transform:rotate(-45deg);box-shadow:0 0 20px #ff328c,0 0 55px #ff328c,0 0 90px #ff328c;animation:beat 1.25s infinite}
+.heart:before,.heart:after{content:"";position:absolute;width:95px;height:95px;border-radius:50%;background:#ff328c}
+.heart:before{top:-47px;left:0}.heart:after{top:0;left:47px}
+.heart-symbol{position:absolute;z-index:2;font-size:43px;color:white;text-shadow:0 0 15px white}
+@keyframes beat{50%{transform:rotate(-45deg) scale(1.1)}}
+.particle{position:absolute;color:#ffacd4;text-shadow:0 0 12px #ff3297;animation:float 3s linear forwards;pointer-events:none}
+@keyframes float{from{transform:translateY(35px) scale(.5);opacity:0}25%{opacity:1}to{transform:translateY(-130px) scale(1.3);opacity:0}}
+#letterSection{display:none;position:relative;z-index:2;background:#fdf7f0;color:#453b3e;min-height:100vh;padding:55px 16px 70px}
+.letter-wrap{width:min(100%,700px);margin:auto;text-align:center}
+.letter-top{font-size:.75rem;letter-spacing:4px;color:#b36c86;text-transform:uppercase;margin-bottom:22px}
+.photo-frame{width:min(260px,75vw);margin:0 auto 30px;padding:9px;background:white;border-radius:17px;box-shadow:0 8px 28px #9b6d7c25;transform:rotate(-2deg);border:1px solid #f1dce4}
+.remy-photo{display:block;width:100%;height:auto;max-height:350px;object-fit:cover;border-radius:10px}
+.photo-caption{font-family:'Pacifico',cursive;color:#a65c78;font-size:1.05rem;margin-top:12px}
+.letter-heading{font-family:'Pacifico',cursive;color:#b45b7c;font-size:clamp(1.8rem,7vw,2.7rem);margin-bottom:10px;text-shadow:none;animation:none}
+.letter-subheading{color:#997984;font-size:.9rem;margin-bottom:30px}
+.letter-paper{background:#fffdf9;border:1px solid #f0e2d9;border-radius:17px;padding:clamp(22px,6vw,42px);text-align:left;box-shadow:0 12px 35px #876c5c12}
+.letter-paper p{font-family:'Quicksand',sans-serif;font-size:1rem;line-height:1.95;margin-bottom:18px;color:#504348;overflow-wrap:anywhere}
+.letter-paper .dear{font-family:'Pacifico',cursive;color:#b45b7c;font-size:1.4rem;margin-bottom:20px}
+.signature{font-family:'Pacifico',cursive!important;color:#b45b7c!important;font-size:1.35rem!important;text-align:right;margin-top:25px}
+.footer-heart{color:#d66b91;font-size:1.4rem;margin-top:25px}
+@media(max-width:480px){.screen{padding:24px 16px}.letter-paper p{font-size:.96rem}}
 </style>
 </head>
 
 <body>
-
 <canvas id="matrix"></canvas>
 
+<!-- INTRO -->
 <section class="screen" id="introScreen">
-    <div class="glow top-glow"></div>
-    <div class="glow bottom-glow"></div>
-
-    <p class="small-label">A little message for someone special</p>
-    <h1 class="main-title">BABYYY</h1>
-    <h2 class="apology-title">INAS MINTA MAAAF ♡</h2>
-    <p class="subtitle">please stay for a little while...</p>
-    <button class="open-button" onclick="startCountdown()">
-        CLICK HERE, BABY ♡
-    </button>
+  <div class="glow one"></div><div class="glow two"></div>
+  <p class="label">incoming message ♡</p>
+  <h1>BABYYY</h1>
+  <p class="fav-text">YOU ARE MY<br>FAVOURITE BOYY ♡</p>
+  <p class="subtitle">someone has a little something for you...</p>
+  <button onclick="showJoke()">OPEN THIS, BABY ♡</button>
 </section>
 
-<section class="screen" id="countdownScreen">
-    <div class="glow top-glow"></div>
-    <div class="countdown" id="countNumber">3</div>
-    <p class="subtitle">loading something from my heart...</p>
+<!-- SWEET MESSAGE -->
+<section class="screen" id="jokeScreen">
+  <div class="glow one"></div><div class="glow two"></div>
+  <p class="label">a very important message</p>
+  <h1 style="font-size:clamp(2.2rem,8vw,4rem)">HEHEHE ♡</h1>
+  <p class="cute-line">
+    Ikan hiu makan kepiting,<br>
+    lebiiu my everythinggg 🦈💗
+  </p>
+  <p class="subtitle">hehe, i love annoying youuu 🤏🏻</p>
+  <button onclick="startCountdown()">OKAY NOW CLICK THIS 💌</button>
 </section>
 
-<section class="screen" id="mainScreen">
-    <div class="glow top-glow"></div>
-    <div class="glow bottom-glow"></div>
-
-    <p class="small-label">for my favourite person</p>
-
-    <div class="heart-area" id="heartArea">
-        <div class="heart"></div>
-        <div class="heart-symbol">♡</div>
-    </div>
-
-    <h1 class="main-title">I'm Sorry, Baby</h1>
-    <p class="subtitle">i have something i want to tell you...</p>
-
-    <button class="open-button" onclick="openLetter()">
-        OPEN YOUR LETTER 💌
-    </button>
+<!-- COUNTDOWN -->
+<section class="screen" id="countdownScreen" style="display:none">
+  <div class="glow one"></div>
+  <div class="count" id="countNumber">3</div>
+  <p class="subtitle">loading something from my heart...</p>
 </section>
 
+<!-- HEART INTRO: NO PHOTO HERE -->
+<section class="screen" id="heartScreen">
+  <div class="glow one"></div><div class="glow two"></div>
+  <p class="label">for my favourite person</p>
+  <div class="heart-area" id="heartArea">
+    <div class="heart"></div>
+    <div class="heart-symbol">♡</div>
+  </div>
+  <h1 style="font-size:clamp(2rem,7vw,3.7rem)">I'm Sorry, Baby</h1>
+  <p class="subtitle">i have something i want to tell you...</p>
+  <button onclick="openLetter()">OPEN YOUR LETTER 💌</button>
+</section>
+
+<!-- LETTER: REMY'S PHOTO IS ABOVE THE LETTER -->
 <section id="letterSection">
-    <div class="letter-wrap">
+  <div class="letter-wrap">
+    <p class="letter-top">a little piece of my heart</p>
 
-        <p class="letter-top">a little piece of my heart</p>
-
-        <!-- Upload Remy's photo as remy.jpg in the same folder as index.html -->
-        <div class="photo-frame">
-            <img
-                class="remy-photo"
-                src="remy.jpg"
-                alt="A special photo of Remy"
-            >
-            <p class="photo-caption">my favourite person ♡</p>
-        </div>
-
-        <h1 class="letter-heading">To My Baby ♡</h1>
-        <p class="letter-subheading">please read this with your heart</p>
-
-        <div class="letter-paper">
-            <p class="dear">Dear Remy,</p>
-
-            <p>
-                Hi, baby. I don't really know how to start this letter,
-                but I know that there are things I want to tell Remy
-                properly. So, here I am, trying to put my feelings into
-                words because Remy means so much to me.
-            </p>
-
-            <p>
-                First of all, Inas is sorry. I'm sorry for the times
-                I become moody, for the times I overthink, and for the
-                moments when my feelings get the better of me. Sometimes
-                I don't know how to explain what is going on inside my
-                head, and I end up expressing it in ways I never intended.
-                That doesn't make it okay, and I'm sorry if I have ever
-                made Remy feel tired, confused, or hurt.
-            </p>
-
-            <p>
-                I know that I'm not perfect. There are still so many
-                things I need to learn about myself, about communicating,
-                and about understanding another person's feelings.
-                I'm trying, baby. I really am. I don't want to keep
-                repeating the same mistakes without learning from them.
-            </p>
-
-            <p>
-                Thank you for being here with me, for the little things
-                Remy does, and for the moments that might seem ordinary
-                but mean a lot to me. Even the smallest things can make
-                my day better. Sometimes I might not know how to show
-                how grateful I am, but please don't think that I don't
-                appreciate Remy.
-            </p>
-
-            <p>
-                Inas likes the way Remy makes me smile, the little
-                moments we share, and the comfort of having someone
-                I can talk to. I like Remy's smile more than I can
-                explain. It's honestly unfair how I can be upset and
-                then suddenly find it difficult to stay angry when
-                Remy smiles at me.
-            </p>
-
-            <p>
-                I don't expect everything between us to be perfect.
-                We are both human, and we can have bad days,
-                misunderstandings, and moments when we don't know
-                what to say. I just hope that we can keep learning
-                to understand each other, one step at a time.
-            </p>
-
-            <p>
-                If Inas ever makes Remy feel like Remy isn't enough,
-                please know that this is not what I want. I don't want
-                my overthinking or my mood to make Remy question
-                how much I appreciate having Remy in my life.
-            </p>
-
-            <p>
-                Baby, Inas cares about Remy so much. I can't promise
-                that I'll never make mistakes again, but I can promise
-                that I'll keep trying to communicate better, to listen,
-                and to take responsibility when I am wrong.
-            </p>
-
-            <p>
-                I don't want to force anything or rush anything.
-                I just want us to enjoy the moments we have and let
-                things grow naturally. Whatever happens, I'm thankful
-                that our paths crossed and that I got the chance
-                to know someone like Remy.
-            </p>
-
-            <p>
-                And if Allah gives us the chance to continue growing
-                closer, I hope we can do it with patience, kindness,
-                honesty, and understanding.
-            </p>
-
-            <p>
-                So, once again, I'm sorry, baby. Not just because
-                I don't want us to be upset with each other, but
-                because Remy's feelings matter to me too.
-                I hope this little letter can explain what I sometimes
-                struggle to say out loud.
-            </p>
-
-            <p>
-                Please take care of yourself, okay? Eat properly,
-                get enough rest, and don't forget that you deserve
-                kindness too. I hope I can give Remy more good
-                memories, more reasons to smile, and more moments
-                that feel safe and genuine.
-            </p>
-
-            <p>
-                I love you, and I'm grateful for you.
-                Thank you for being my favourite person to annoy
-                and my favourite person to miss.
-            </p>
-
-            <p class="signature">
-                always with love,<br>
-                Inas ♡
-            </p>
-        </div>
-
-        <p class="footer-heart">made with love, just for you ♡</p>
+    <div class="photo-frame">
+      <img class="remy-photo" src="remy.jpg" alt="A special photo of Remy">
+      <p class="photo-caption">my favourite person ♡</p>
     </div>
+
+    <h2 class="letter-heading">To My Baby ♡</h2>
+    <p class="letter-subheading">please read this with your heart</p>
+
+    <div class="letter-paper">
+      <p class="dear">Dear Remy,</p>
+
+      <p>Hi, baby. I don't really know how to start this letter, but I know that there are things I want to tell Remy properly. So, here I am, trying to put my feelings into words because Remy means so much to me.</p>
+
+      <p>First of all, Inas is sorry. I'm sorry for the times I become moody, for the times I overthink, and for the moments when my feelings get the better of me. Sometimes I don't know how to explain what is going on inside my head, and I end up expressing it in ways I never intended. That doesn't make it okay, and I'm sorry if I have ever made Remy feel tired, confused, or hurt.</p>
+
+      <p>I know that I'm not perfect. There are still so many things I need to learn about myself, about communicating, and about understanding another person's feelings. I'm trying, baby. I really am. I don't want to keep repeating the same mistakes without learning from them.</p>
+
+      <p>Thank you for being here with me, for the little things Remy does, and for the moments that might seem ordinary but mean a lot to me. Even the smallest things can make my day better. Sometimes I might not know how to show how grateful I am, but please don't think that I don't appreciate Remy.</p>
+
+      <p>Inas likes the way Remy makes me smile, the little moments we share, and the comfort of having someone I can talk to. I like Remy's smile more than I can explain. It's honestly unfair how I can be upset and then suddenly find it difficult to stay angry when Remy smiles at me.</p>
+
+      <p>I don't expect everything between us to be perfect. We are both human, and we can have bad days, misunderstandings, and moments when we don't know what to say. I just hope that we can keep learning to understand each other, one step at a time.</p>
+
+      <p>If Inas ever makes Remy feel like Remy isn't enough, please know that this is not what I want. I don't want my overthinking or my mood to make Remy question how much I appreciate having Remy in my life.</p>
+
+      <p>Baby, Inas cares about Remy so much. I can't promise that I'll never make mistakes again, but I can promise that I'll keep trying to communicate better, to listen, and to take responsibility when I am wrong.</p>
+
+      <p>I don't want to force anything or rush anything. I just want us to enjoy the moments we have and let things grow naturally. Whatever happens, I'm thankful that our paths crossed and that I got the chance to know someone like Remy.</p>
+
+      <p>And if Allah gives us the chance to continue growing closer, I hope we can do it with patience, kindness, honesty, and understanding.</p>
+
+      <p>So, once again, I'm sorry, baby. Not just because I don't want us to be upset with each other, but because Remy's feelings matter to me too. I hope this little letter can explain what I sometimes struggle to say out loud.</p>
+
+      <p>Please take care of yourself, okay? Eat properly, get enough rest, and don't forget that you deserve kindness too. I hope I can give Remy more good memories, more reasons to smile, and more moments that feel safe and genuine.</p>
+
+      <p>I love you, and I'm grateful for you. Thank you for being my favourite person to annoy and my favourite person to miss.</p>
+
+      <p class="signature">always with love,<br>Inas ♡</p>
+    </div>
+
+    <p class="footer-heart">made with love, just for you ♡</p>
+  </div>
 </section>
 
 <script>
-/* HACKER-STYLE DIGITAL RAIN: LOTS OF 0 AND 1 */
+/* LOTS OF FALLING 0 AND 1 */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+let w=0,h=0,fontSize=15,drops=[];
 
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-let columns = [];
-let fontSize = 15;
-let drops = [];
-let rainWidth = 0;
-let rainHeight = 0;
-
-function resizeMatrix() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-    rainWidth = window.innerWidth;
-    rainHeight = window.innerHeight;
-
-    canvas.width = rainWidth * dpr;
-    canvas.height = rainHeight * dpr;
-    canvas.style.width = rainWidth + "px";
-    canvas.style.height = rainHeight + "px";
-
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.font = "bold " + fontSize + "px monospace";
-
-    const count = Math.ceil(rainWidth / fontSize);
-    columns = Array.from({ length: count }, () => Math.random() * -100);
-    drops = Array.from({ length: count }, () => Math.random() * -100);
+function resizeMatrix(){
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  w=window.innerWidth;h=window.innerHeight;
+  canvas.width=w*dpr;canvas.height=h*dpr;
+  canvas.style.width=w+"px";canvas.style.height=h+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  const columns=Math.ceil(w/fontSize);
+  drops=Array.from({length:columns},()=>Math.random()*(h/fontSize)*-1);
 }
+function drawMatrix(){
+  ctx.fillStyle="rgba(0,0,0,0.12)";
+  ctx.fillRect(0,0,w,h);
+  ctx.font="bold "+fontSize+"px monospace";
+  for(let i=0;i<drops.length;i++){
+    const digit=Math.random()>.5?"1":"0";
+    const x=i*fontSize,y=drops[i]*fontSize;
+    ctx.fillStyle=Math.random()>.97?"#ffffff":(Math.random()>.3?"#ff2f92":"#ff9acb");
+    ctx.shadowBlur=8;ctx.shadowColor="#ff2f92";
+    ctx.fillText(digit,x,y);ctx.shadowBlur=0;
+    drops[i]+=(Math.random()>.75?2.2:1.25);
+    if(y>h&&Math.random()>.82)drops[i]=Math.random()*-25;
+  }
+  requestAnimationFrame(drawMatrix);
+}
+resizeMatrix();drawMatrix();
+window.addEventListener("resize",resizeMatrix);
 
-function drawMatrix() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.11)";
-    ctx.fillRect(0, 0, rainWidth, rainHeight);
-
-    ctx.font = "bold " + fontSize + "px monospace";
-    ctx.textBaseline = "top";
-
-    for (let i = 0; i < drops.length; i++) {
-        let digit = Math.random() > 0.5 ? "1" : "0";
-        let x = i * fontSize;
-        let y = drops[i] * fontSize;
-
-        if (Math.random() > 0.97) {
-            ctx.fillStyle = "#ffffff";
-        } else {
-            ctx.fillStyle = Math.random() > 0.25 ? "#ff2f92" : "#ff9acb";
-        }
-
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = "#ff2f92";
-        ctx.fillText(digit, x, y);
-        ctx.shadowBlur = 0;
-
-        if (y > rainHeight && Math.random() > 0.94) {
-            drops[i] = Math.random() * -30;
-        } else {
-            drops[i] += Math.random() > 0.8 ? 1.7 : 1.15;
-        }
+/* SCREEN TRANSITIONS */
+function showJoke(){
+  document.getElementById("introScreen").style.display="none";
+  document.getElementById("jokeScreen").style.display="flex";
+  window.scrollTo(0,0);
+}
+function startCountdown(){
+  document.getElementById("jokeScreen").style.display="none";
+  document.getElementById("countdownScreen").style.display="flex";
+  window.scrollTo(0,0);
+  let n=3;
+  const el=document.getElementById("countNumber");
+  el.textContent=n;
+  const timer=setInterval(()=>{
+    n--;
+    if(n>0){
+      el.textContent=n;
+      el.style.animation="none";
+      void el.offsetWidth;
+      el.style.animation="appear .5s ease";
+    }else{
+      clearInterval(timer);
+      document.getElementById("countdownScreen").style.display="none";
+      document.getElementById("heartScreen").style.display="flex";
     }
-
-    requestAnimationFrame(drawMatrix);
+  },1000);
+}
+function openLetter(){
+  document.getElementById("heartScreen").style.display="none";
+  const letter=document.getElementById("letterSection");
+  letter.style.display="block";
+  window.scrollTo({top:letter.offsetTop,behavior:"smooth"});
 }
 
-resizeMatrix();
-drawMatrix();
-window.addEventListener("resize", resizeMatrix);
-
-/* FLOATING PARTICLES AROUND THE HEART */
-
-const heartArea = document.getElementById("heartArea");
-
-function createParticle() {
-    if (!heartArea) return;
-
-    const particle = document.createElement("span");
-    const symbols = ["♡", "♥", "✦", "✧", "·"];
-
-    particle.className = "particle";
-    particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    particle.style.left = Math.random() * 100 + "%";
-    particle.style.bottom = Math.random() * 15 + "px";
-    particle.style.fontSize = (10 + Math.random() * 16) + "px";
-    particle.style.animationDuration = (2 + Math.random() * 2) + "s";
-
-    heartArea.appendChild(particle);
-
-    setTimeout(() => particle.remove(), 4000);
+/* FLOATING HEART PARTICLES */
+const heartArea=document.getElementById("heartArea");
+function createParticle(){
+  const p=document.createElement("span");
+  p.className="particle";
+  p.textContent=["♡","♥","✦","✧","·"][Math.floor(Math.random()*5)];
+  p.style.left=Math.random()*100+"%";
+  p.style.bottom=Math.random()*15+"px";
+  p.style.fontSize=(10+Math.random()*16)+"px";
+  p.style.animationDuration=(2+Math.random()*2)+"s";
+  heartArea.appendChild(p);
+  setTimeout(()=>p.remove(),4000);
 }
-
-setInterval(createParticle, 180);
-
-/* COUNTDOWN */
-
-let countdownStarted = false;
-
-function startCountdown() {
-    if (countdownStarted) return;
-    countdownStarted = true;
-
-    document.getElementById("introScreen").style.display = "none";
-    document.getElementById("countdownScreen").style.display = "flex";
-
-    let count = 3;
-    const countNumber = document.getElementById("countNumber");
-    countNumber.textContent = count;
-
-    const timer = setInterval(() => {
-        count--;
-
-        if (count > 0) {
-            countNumber.textContent = count;
-            countNumber.style.animation = "none";
-            void countNumber.offsetWidth;
-            countNumber.style.animation = "countPop 0.8s ease";
-        } else {
-            clearInterval(timer);
-            document.getElementById("countdownScreen").style.display = "none";
-            document.getElementById("mainScreen").style.display = "flex";
-        }
-    }, 1000);
-}
-
-/* OPEN THE LETTER */
-
-function openLetter() {
-    document.getElementById("mainScreen").style.display = "none";
-
-    const letter = document.getElementById("letterSection");
-    letter.style.display = "block";
-
-    window.scrollTo({
-        top: letter.offsetTop,
-        behavior: "smooth"
-    });
-}
+setInterval(createParticle,180);
 </script>
-
 </body>
 </html>
